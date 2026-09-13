@@ -1,0 +1,6 @@
+.DS_Store
+.scratch/
+*.tmp
+*.swp
+.env
+.env.*
