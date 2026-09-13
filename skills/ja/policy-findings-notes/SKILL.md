@@ -1,32 +1,44 @@
 ---
 name: policy-findings-notes
-version: 0.1.0
-description: 保存済みソースから変数ごとの事実だけを findings.md に抜き出し、解釈や政策結論を混入させない。
+description: "保存済みソースから変数ごとの事実を findings.md に抜き出すとき（解釈や政策結論を混入させない）に使う。"
+metadata:
+  version: "0.2.0"
 ---
 
-# 政策事実メモ
+# 政策事実抽出
 
 ## 目的
 
-ソースを読んだ結果を、解釈なしの事実として変数ごとに固定する。
+ソースから解釈なしの事実を変数ごとに固定する。
+
+スキーマ正本: [`docs/artifact-contracts.md`](../../../docs/artifact-contracts.md)
 
 ## 発動タイミング
 
-- `sources/` と `sources-index.md` に Tier 1/2 の実体があるとき
-- [`policy-proposal-examination`](../policy-proposal-examination/SKILL.md) の Phase 4
+- Tier 1/2 の実体が `sources/` にあるとき
+- Phase 4
 
 ## 手順
 
-1. 変数ごとに、ソースから読み取れる事実だけを書く。
-2. 数値は単位・時点・地域をセットにする。
-3. 出典は `SRC-xxx` を付ける。
-4. 「だから〇〇政策が必要」などの解釈は書かない（[`policy-option-comparison`](../policy-option-comparison/SKILL.md) へ）。
+1. 契約どおり `F-ID` / `V-ID` / `SRC-ID` / locator / 原値 / 単位 / 時点・地域 / 算式 を書く
+2. locator 必須（ページ・表・列行など）
+3. 加工値は原値と算式を残す
+4. 解釈・政策結論は書かない
+5. 必須変数が Finding で望ましい粒度を満たしたら `variables.md` を `verified` に更新。足りなければ `partial` / `gap`
+
+## フェーズ判定
+
+| | |
+|---|---|
+| 必須入力 | `sources-index.md` とローカルファイル |
+| 出力 | `findings.md`、変数状態の更新 |
+| PASS | 必須変数が `verified` または明示 `gap`。各 Finding に locator |
+| WARN | 必須に `partial` |
+| FAIL | locator 欠落、未保存ソース参照、解釈混入 |
+| 差し戻し先 | Phase 3 / source-criticism |
+| 完了条件 | FAIL でない |
 
 ## 成果物
 
-- `challenges/<slug>/findings.md`
-
-## やらないこと
-
-- 未保存ソースや記憶上の数値で埋める
-- findings に政策オプションの結論を書く
+- `findings.md`
+- 更新された `variables.md`

@@ -1,39 +1,43 @@
 ---
 name: policy-option-comparison
-version: 0.1.0
-description: 事実メモと gap を前提に、課題に対する複数の政策オプションを options.md で比較する（是非の二択に潰さない）。
+description: "事実メモと gap を前提に、課題に対する複数の政策オプションを options.md で比較するとき（是非の二択に潰さない）に使う。"
+metadata:
+  version: "0.2.0"
 ---
 
 # 政策オプション比較
 
 ## 目的
 
-課題に対する介入案を複数並べ、依拠する事実・欠測・副作用・実装主体・検証方法で比較する。
+介入案を複数並べ、事実・欠測・副作用・実装・検証で比較する。**既定では順位付けしない。**
+
+スキーマ正本: [`docs/artifact-contracts.md`](../../../docs/artifact-contracts.md)
 
 ## 発動タイミング
 
-- `findings.md` があり、主要変数が `sourced` または明示的 `gap` のとき
-- [`policy-proposal-examination`](../policy-proposal-examination/SKILL.md) の Phase 5
+- `findings.md` があり、必須変数が `verified` / `partial` / `gap` のとき
+- Phase 5
 
 ## 手順
 
-各オプションに次を書く。
+1. 必ず `OPT-STATUSQUO`（現状維持）を置く
+2. 代替案を `OPT-A`… として契約項目を埋める（費用、権限、可逆性など含む）
+3. 依拠する事実は `F-ID` を優先
+4. 「有力」「推奨」等の順位語を使う場合のみ、ファイル先頭の評価設定（決定主体・成功指標・制約・評価軸・判断理由）を必須記入する
+5. 評価設定が空のまま順位語を使ったら FAIL
 
-- 介入内容（誰が何をするか）
-- 効くと期待する変数（Vxx）
-- 依拠する事実（`SRC` / findings）
-- 前提・必要データ（未充足の `gap`）
-- 副作用・分配への影響
-- 実装主体（国 / 都道府県 / 自治体 / 民間）と難所
-- 検証方法（パイロットで見る指標）
+## フェーズ判定
 
-「入れる／入れない」の二択にしない。地域変数で向き不向きを書く。
+| | |
+|---|---|
+| 必須入力 | findings、必須変数の状態 |
+| 出力 | `options.md`（STATUSQUO + 1つ以上の代替） |
+| PASS | 契約項目が埋まり、gap が隠されていない。順位付けなし、または評価設定あり |
+| WARN | 費用・権限などが `gap` だらけだが明示されている |
+| FAIL | STATUSQUO 欠落、findings に無い事実を前提、評価設定なしの順位付け |
+| 差し戻し先 | Phase 4 または評価設定の確認 |
+| 完了条件 | FAIL でない |
 
 ## 成果物
 
-- `challenges/<slug>/options.md`
-
-## やらないこと
-
-- findings に無い事実を前提にする
-- gap を隠して断定する
+- `options.md`

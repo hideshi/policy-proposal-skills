@@ -1,56 +1,53 @@
 ---
 name: policy-evidence-ingestion
-version: 0.1.0
-description: needed 変数について公開データを取得し、具体案リポの sources/ に保存して sources-index.md にメタデータを残す（ローカル実体化）。
+description: "needed 変数について公開データを取得し、具体案リポの sources/ に保存して sources-index.md を更新する（ローカル実体化）ときに使う。"
+metadata:
+  version: "0.2.0"
 ---
 
 # 政策根拠データの実体化
 
 ## 目的
 
-主張に使う数値・報告書を URL だけに頼らず、具体案リポへ保存して再現可能にする。
+主張に使う数値・報告書を URL だけに頼らず、具体案リポへ保存して再現可能にする。本スキルは**取得と `sources-index` 更新**を所有する。判定ロジックの正本は [`policy-source-criticism-gate`](../policy-source-criticism-gate/SKILL.md)。
+
+スキーマ正本: [`docs/artifact-contracts.md`](../../../docs/artifact-contracts.md)
 
 ## 発動タイミング
 
-- `variables.md` に `needed` があるとき
-- [`policy-proposal-examination`](../policy-proposal-examination/SKILL.md) の Phase 3
+- `variables.md` に `needed` / `partial` があるとき
+- Phase 3
 
-## 前提
+## ループ
 
-- [`policy-variable-inventory`](../policy-variable-inventory/SKILL.md)
-- 保存前に [`policy-source-criticism-gate`](../policy-source-criticism-gate/SKILL.md) で Tier 判定
+`候補探索 → 軸A/B判定 → 取得・保存 → 内容確認 → 変数状態更新 → 必要なら再探索`
 
 ## 手順
 
-1. 各 `needed` 変数について Tier 1 → Tier 2 の順で探す。
-2. Tier 判定する。Tier 3 は根拠保存の対象外（手掛かりなら一次へ）。
-3. PDF・CSV 優先で `challenges/<slug>/sources/` に保存する。HTML のみの場合は本文・表を抽出し、元 URL を必ず残す。
-4. `sources-index.md` に追記する。
+1. 書き込み先が具体案リポか確認（スキル集なら停止）
+2. 各対象変数について Tier 1→2 で候補を探す
+3. [`policy-source-criticism-gate`](../policy-source-criticism-gate/SKILL.md) で判定
+4. PASS/WARN のみ `sources/` へ保存（PDF/CSV 優先）
+5. **sha256 を計算して必須記入**
+6. `sources-index.md` に契約フィールドを書く（発行日、媒体、取得クエリ、対象変数など）
+7. 検索記録: 使ったクエリ、取得日、不採用候補（Tier3や unfit）をメモに残してよい
+8. 変数状態を更新: ファイルのみ → `acquired`、粒度不足 → `partial`、取れない → `gap`。`verified` は Finding 作成後（Phase 4）
+9. 推測で埋めない
 
-```markdown
-### SRC-001
-- 標題:
-- 発行主体:
-- Tier: 1 | 2
-- URL:
-- 取得日: YYYY-MM-DD
-- ローカルパス: sources/...
-- 対象変数: V01
-- 対象期間・地域:
-- メモ:
-```
+## フェーズ判定
 
-5. 可能なら sha256 を残す。
-6. 取得できない／粒度不足は変数を `gap` にし、推測で埋めない。
-7. 取れた変数は `sourced` に更新する。
+| | |
+|---|---|
+| 必須入力 | `variables.md`、具体案リポルート |
+| 出力 | `sources/*`、`sources-index.md`、更新された変数状態 |
+| PASS | 必須変数がすべて `acquired` 以上または明示 `gap`、各採用 SRC に sha256 |
+| WARN | 必須に `partial` が残る |
+| FAIL | 必須が `needed` のまま、または sha256／ローカルパス欠落 |
+| 差し戻し先 | Phase 2 または source-criticism |
+| 完了条件 | FAIL でないこと。`verified` は Phase 4 後 |
 
 ## 成果物
 
-- `challenges/<slug>/sources/*`
-- `challenges/<slug>/sources-index.md`
+- `sources/`
+- `sources-index.md`
 - 更新された `variables.md`
-
-## やらないこと
-
-- ローカル未保存のまま数値を findings / options に書く
-- Tier 3 を sources に「根拠」として登録する
