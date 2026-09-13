@@ -2,28 +2,35 @@
 
 課題起点で政策案を検討するための AI エージェント用スキル集です。
 
-特定の政策手段（例: ライドシェアの是非）から入らず、**課題を先に固定**し、変数を洗い、国・都道府県・自治体・独立研究機関などの公開情報で裏取りし、取得物をローカルに残してから政策オプションを比較します。
+特定の政策手段の是非から入らず、**課題を先に固定**し、変数を洗い、公開情報で裏取りし、取得物をローカルに残してから政策オプションを比較します。
 
-情報源の階層（Tier）と、主張（Claim）と根拠（Evidence）の対応は、[scholarly-agent-skills](https://github.com/hideshi/scholarly-agent-skills) の `source-criticism-gate` / `claim-evidence-gate` の考え方を政策検討向けに簡略化したものです。
+情報源の階層（Tier）と claim–evidence 対応は、[scholarly-agent-skills](https://github.com/hideshi/scholarly-agent-skills) の考え方を政策向けに分けたものです。
 
-## スキル
+## スキル（役割別）
 
 | スキル | 用途 |
 |---|---|
-| [`policy-proposal-examination`](skills/ja/policy-proposal-examination/SKILL.md) | 課題固定 → 変数 → 公開データ収集・ローカル保存 → オプション比較 → claim–evidence |
+| [`policy-proposal-examination`](skills/ja/policy-proposal-examination/SKILL.md) | 全体手順のオーケストレータ |
+| [`policy-challenge-framing`](skills/ja/policy-challenge-framing/SKILL.md) | 課題固定 |
+| [`policy-variable-inventory`](skills/ja/policy-variable-inventory/SKILL.md) | 変数インベントリ |
+| [`policy-source-criticism-gate`](skills/ja/policy-source-criticism-gate/SKILL.md) | 情報源 Tier 判定 |
+| [`policy-evidence-ingestion`](skills/ja/policy-evidence-ingestion/SKILL.md) | 公開データの取得・ローカル保存 |
+| [`policy-findings-notes`](skills/ja/policy-findings-notes/SKILL.md) | 事実メモ |
+| [`policy-option-comparison`](skills/ja/policy-option-comparison/SKILL.md) | 政策オプション比較 |
+| [`policy-claim-evidence-gate`](skills/ja/policy-claim-evidence-gate/SKILL.md) | 主張と根拠のゲート |
+
+カタログ: [`skills/ja/README.md`](skills/ja/README.md)
 
 ## リポジトリの役割分担
 
 | リポジトリ | 中身 | 公開の想定 |
 |---|---|---|
-| **本リポ** (`policy-proposal-skills`) | 手順・雛形・ルール（スキル） | いずれ公開 |
+| **本リポ** | 手順・雛形・ルール（スキル） | いずれ公開 |
 | 具体案リポ（利用者が用意） | 課題ごとの出典・事実・政策案 | 非公開でも可 |
 
-具体の政策案・取得した統計ファイルは本リポに置かない。`examples/challenge-template/` は空の雛形のみ。
+具体の政策案・取得ファイルは本リポに置かない。`examples/challenge-template/` は空の雛形のみ。
 
 ## 導入
-
-具体案リポのルートで、本スキルをサブモジュールまたは隣接クローンとして参照し、エージェントに `skills/ja/policy-proposal-examination/SKILL.md` を読ませる。
 
 ```bash
 # 例: 隣接配置
@@ -31,8 +38,8 @@
 # ~/repo/<your-policy-cases>
 ```
 
-課題ディレクトリは具体案リポ側に作り、`examples/challenge-template/` をコピーして始める。
+課題ディレクトリは具体案リポ側に作り、`examples/challenge-template/` をコピーして始める。全体の流れは `policy-proposal-examination`、個別作業は上表の role スキルへ。
 
 ## 免責
 
-無保証の検討支援です。数値・出典・政策オプションに誤りが残り得ます。詳細は [DISCLAIMER.md](DISCLAIMER.md)。
+無保証の検討支援です。詳細は [DISCLAIMER.md](DISCLAIMER.md)。
