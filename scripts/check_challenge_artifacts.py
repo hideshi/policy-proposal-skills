@@ -66,8 +66,8 @@ def main() -> int:
     options = root / "options.md"
     if options.exists():
         ob = options.read_text(encoding="utf-8")
-        if "OPT-STATUSQUO" not in ob and "現状維持" not in ob:
-            warns.append("options.md: STATUSQUO / 現状維持 not found")
+        if "OPT-現状維持" not in ob and "現状維持" not in ob:
+            warns.append("options.md: 現状維持案 not found")
         if re.search(r"有力|推奨", ob) and "決定主体" not in ob:
             errs.append("options.md: ranking language without 評価設定")
 

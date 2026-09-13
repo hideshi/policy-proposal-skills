@@ -41,7 +41,7 @@ metadata:
 | 3a | [`policy-source-criticism-gate`](../policy-source-criticism-gate/SKILL.md) | Tier+適合 |
 | 3b | [`policy-evidence-ingestion`](../policy-evidence-ingestion/SKILL.md) | 取得+sha256。3a⇄3b ループ可 |
 | 4 | [`policy-findings-notes`](../policy-findings-notes/SKILL.md) | locator 付き Finding。必須は verified/gap |
-| 5 | [`policy-option-comparison`](../policy-option-comparison/SKILL.md) | STATUSQUO+代替。順位付けは評価設定付きのみ |
+| 5 | [`policy-option-comparison`](../policy-option-comparison/SKILL.md) | 現状維持+代替。順位付けは評価設定付きのみ |
 | 6 | [`policy-claim-evidence-gate`](../policy-claim-evidence-gate/SKILL.md) | FAIL Claim ゼロまたは WARN 受容 |
 
 依存と差し戻しの概略:
