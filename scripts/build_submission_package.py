@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build submission-package.md (+ optional PDF) for a policy challenge folder."""
+"""Build <課題物理名>.md (+ optional PDF) for a policy challenge folder."""
 from __future__ import annotations
 
 import argparse
@@ -9,6 +9,7 @@ import shutil
 import subprocess
 import sys
 from pathlib import Path
+from urllib.parse import unquote, urlparse
 
 PROFILES = {
     "analysis-pilot": [
@@ -84,6 +85,23 @@ def extract_gaps(summary: str, analysis: str) -> str:
     return "\n".join(parts) if parts else "_残ギャップ節が見つからない。variables の gap を確認。_\n"
 
 
+def link_label_from_url(url: str) -> str:
+    """Display basename (file name) for long URLs; href stays full URL."""
+    try:
+        p = urlparse(url)
+    except ValueError:
+        return url
+    path = unquote(p.path or "")
+    segments = [s for s in path.split("/") if s]
+    if segments:
+        label = segments[-1]
+    elif p.netloc:
+        label = p.netloc
+    else:
+        label = url
+    return label.replace("|", "\\|").replace("]", "\\]")
+
+
 def extract_sources_index(si: str, limit: int = 200) -> str:
     if not si:
         return "_sources-index.md なし_\n"
@@ -102,11 +120,16 @@ def extract_sources_index(si: str, limit: int = 200) -> str:
             murl = re.search(r"https?://\S+", url_s)
             url_s = murl.group(0).rstrip(")。,]") if murl else url_s.split()[0]
         url_s = url_s.replace("|", "\\|")
+        if url_s.startswith(("http://", "https://")):
+            label = link_label_from_url(url_s)
+            url_cell = "[" + label + "](" + url_s + ")"
+        else:
+            url_cell = url_s
         lines.append(
             f"| {sid} | {title.group(1).strip() if title else ''} | "
             f"{pub.group(1).strip() if pub else ''} | "
             f"{tier.group(1).strip() if tier else ''} | "
-            f"{url_s} |"
+            f"{url_cell} |"
         )
     if len(blocks) > limit:
         lines.append(f"\n_他 {len(blocks) - limit} 件は sources-index.md 参照。_\n")
@@ -163,7 +186,7 @@ def build_md(challenge_dir: Path, profile: str, title: str | None) -> tuple[str,
             one_liner = m2.group(1).strip() if m2 else ""
         parts.append(
             f"# {display_title}\n\n"
-            f"- 課題 slug: `{slug}`\n"
+            f"- 課題名（物理名）: `{slug}`\n"
             f"- 生成日: {today}\n"
             f"- プロファイル: `{profile}`\n"
             f"- 位置づけ: 提出用パッケージ（リポジトリ正本の要約・再構成）\n\n"
@@ -231,50 +254,138 @@ def write_manifest(path: Path, manifest: dict) -> None:
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+def _normalize_html_links(html: str) -> str:
+    html = re.sub(r"<a\s*\n\s*", "<a ", html)
+
+    def enrich(m: re.Match) -> str:
+        href = m.group(1)
+        rest = m.group(2)
+        rest = re.sub(r'\s*target="[^"]*"', "", rest, flags=re.I)
+        rest = re.sub(r'\s*rel="[^"]*"', "", rest, flags=re.I)
+        return '<a href="%s" target="_blank" rel="noopener noreferrer"%s>' % (href, rest)
+
+    return re.sub(
+        r'<a\s+href="(https?://[^"]+)"([^>]*)>',
+        enrich,
+        html,
+        flags=re.I,
+    )
+
+
+def _md_to_html(pandoc: str, md_path: Path, html_path: Path) -> None:
+    subprocess.run(
+        [
+            pandoc,
+            str(md_path),
+            "-o",
+            str(html_path),
+            "--standalone",
+            "-f",
+            "markdown",
+            "-t",
+            "html",
+            "--metadata",
+            "title=提出パッケージ",
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    html = _normalize_html_links(html_path.read_text(encoding="utf-8"))
+    # Override pandoc defaults (36em + 50px) and style links like browser <a>
+    page_css = """
+<style>
+/* Widen usable column; keep modest side padding for readability */
+body {
+  max-width: 56em;
+  padding-left: 18px;
+  padding-right: 18px;
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+@media print {
+  body {
+    max-width: none;
+    padding: 0;
+  }
+}
+@page {
+  size: A4;
+  margin: 14mm 10mm;
+}
+a, a:link, a:visited {
+  color: #0563C1;
+  text-decoration: underline;
+}
+a:hover { color: #03396c; }
+</style>
+"""
+    if "</head>" in html:
+        html = html.replace("</head>", page_css + "</head>", 1)
+    else:
+        html = page_css + html
+    html_path.write_text(html, encoding="utf-8")
+
+
+def _html_to_pdf_weasy(html_path: Path, pdf_path: Path) -> None:
+    weasy = shutil.which("weasyprint")
+    if not weasy:
+        raise FileNotFoundError("weasyprint が無い")
+    subprocess.run(
+        [weasy, str(html_path), str(pdf_path)],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+
+
 def build_pdf(md_path: Path, pdf_path: Path) -> tuple[bool, str]:
+    """Prefer HTML→weasyprint so source URLs become clickable PDF links."""
     pandoc = shutil.which("pandoc")
     if not pandoc:
         return False, "pandoc が無い"
-    xelatex = shutil.which("xelatex")
-    if not xelatex:
-        # fallback: HTML only message
-        html_path = pdf_path.with_suffix(".html")
-        cmd = [pandoc, str(md_path), "-o", str(html_path), "--standalone", "-f", "markdown", "-t", "html"]
+    html_path = pdf_path.with_suffix(".html")
+    weasy_err = "weasyprint が無い"
+    if shutil.which("weasyprint"):
+        try:
+            _md_to_html(pandoc, md_path, html_path)
+            _html_to_pdf_weasy(html_path, pdf_path)
+            return True, str(pdf_path) + " (weasyprint; clickable links)"
+        except subprocess.CalledProcessError as e:
+            weasy_err = (e.stderr or e.stdout or str(e))[-400:]
+        except Exception as e:  # noqa: BLE001
+            weasy_err = str(e)
+    if shutil.which("xelatex"):
+        cmd = [
+            pandoc,
+            str(md_path),
+            "-o",
+            str(pdf_path),
+            "--pdf-engine=xelatex",
+            "-V",
+            "geometry:margin=14mm,left=10mm,right=10mm",
+            "--metadata",
+            "lang=ja",
+            "-V",
+            "mainfont=Noto Sans CJK JP",
+            "-V",
+            "CJKmainfont=Noto Sans CJK JP",
+        ]
         try:
             subprocess.run(cmd, check=True, capture_output=True, text=True)
+            return True, str(pdf_path) + " (xelatex fallback)"
         except subprocess.CalledProcessError as e:
-            return False, f"HTML フォールバックも失敗: {e.stderr[-500:]}"
-        return False, f"xelatex が無いため PDF 未生成。HTML を出力: {html_path}"
-
-    cmd = [
-        pandoc,
-        str(md_path),
-        "-o",
-        str(pdf_path),
-        "--pdf-engine=xelatex",
-        "-V",
-        "documentclass=ltjsarticle",
-        "-V",
-        "geometry:margin=20mm",
-        "--metadata",
-        "lang=ja",
-    ]
-    # Prefer Noto if available; ignore if engine rejects
-    fonts = [
-        "-V",
-        "CJKmainfont=Noto Sans CJK JP",
-        "-V",
-        "mainfont=Noto Sans CJK JP",
-    ]
+            xerr = (e.stderr or e.stdout or "xelatex 失敗")[-400:]
+            try:
+                _md_to_html(pandoc, md_path, html_path)
+            except Exception:
+                pass
+            return False, "PDF 未生成。weasy: " + weasy_err[:200] + " / xelatex: " + xerr
     try:
-        subprocess.run(cmd + fonts, check=True, capture_output=True, text=True)
-        return True, str(pdf_path)
-    except subprocess.CalledProcessError:
-        try:
-            subprocess.run(cmd, check=True, capture_output=True, text=True)
-            return True, str(pdf_path)
-        except subprocess.CalledProcessError as e:
-            return False, e.stderr[-800:] or e.stdout[-800:] or "pandoc PDF 失敗"
+        _md_to_html(pandoc, md_path, html_path)
+    except Exception as e:  # noqa: BLE001
+        return False, "HTML も失敗: " + str(e)
+    return False, "PDF 未生成（" + weasy_err + "）。HTML: " + str(html_path)
 
 
 def main() -> int:
@@ -290,15 +401,16 @@ def main() -> int:
         return 2
 
     md, manifest = build_md(challenge_dir, args.profile, args.title)
-    md_path = challenge_dir / "submission-package.md"
-    manifest_path = challenge_dir / "submission-manifest.yaml"
+    pkg_name = challenge_dir.name  # 物理名（日本語推奨）
+    md_path = challenge_dir / f"{pkg_name}.md"
+    manifest_path = challenge_dir / f"{pkg_name}-マニフェスト.yaml"
     md_path.write_text(md, encoding="utf-8")
     write_manifest(manifest_path, manifest)
     print(f"wrote {md_path}")
     print(f"wrote {manifest_path}")
 
     if args.pdf:
-        pdf_path = challenge_dir / "submission-package.pdf"
+        pdf_path = challenge_dir / f"{pkg_name}.pdf"
         ok, msg = build_pdf(md_path, pdf_path)
         print(("PDF OK: " if ok else "PDF skipped/failed: ") + msg)
         return 0 if ok else 1

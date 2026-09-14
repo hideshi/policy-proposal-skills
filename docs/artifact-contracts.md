@@ -1,6 +1,6 @@
 # 成果物契約（Artifact Contracts）
 
-本ドキュメントは具体案リポ `challenges/<slug>/` のスキーマ正本である。各 role スキルと `examples/challenge-template/` はこれに従う。スキル本文中の例と食い違う場合は本契約を優先する。
+本ドキュメントは具体案リポ `challenges/<slug>/` のスキーマ正本である。`<slug>` は**日本語の課題物理名**を推奨する（例: `京都-観光客の移動手段の不足`）。英語ケバブは使わない。各 role スキルと `examples/challenge-template/` はこれに従う。スキル本文中の例と食い違う場合は本契約を優先する。
 
 ## 利害の原則（全成果物共通）
 
@@ -134,7 +134,7 @@ Evidence は `F-ID` を優先。無い場合のみ `SRC-ID#locator`。規範的 
 
 空ファイルの存在だけでは `PASS` にしない。
 
-## 提出パッケージ（`submission-package.md` + PDF）
+## 提出パッケージ（`<slug>.md` + PDF）
 
 提出先（行政・議会・財団・社内など）へ、政策案と／または実証実験案をまとめて出すときの**中身の定義**。生成手順は `skills/ja/policy-submission-package/SKILL.md`。
 
@@ -152,11 +152,11 @@ Evidence は `F-ID` を優先。無い場合のみ `SRC-ID#locator`。規範的 
 
 共通（すべて）:
 
-1. 表紙（課題 slug、タイトル、日付、提出用の一文要約、利害の原則の要約）
+1. 表紙（課題物理名、タイトル、日付、提出用の一文要約、利害の原則の要約）
 2. 課題一文と対象定義
 3. いま言える事実（PASS 中心。F-ID 付き。野良数値禁止）
 4. 残ギャップ（断定しない穴）
-5. 出典一覧の要約（SRC-ID・標題・発行主体・Tier・URL。本文転載は最小）
+5. 出典一覧の要約（SRC-ID・標題・発行主体・Tier・クリック可能な URL。表示はファイル名等の短いラベル、リンク先はフル URL。本文転載は最小）
 
 `analysis-pilot` 追加:
 
@@ -185,9 +185,10 @@ Evidence は `F-ID` を優先。無い場合のみ `SRC-ID#locator`。規範的 
 
 具体案リポの:
 
-- `challenges/<slug>/submission-package.md`（正本・再生成可）
-- `challenges/<slug>/submission-package.pdf`（提出用）
-- 任意: `challenges/<slug>/submission-manifest.yaml`（プロファイル、含めたファイル、生成日時）
+- `challenges/<slug>/<slug>.md`（提出パッケージ正本・再生成可。ファイル名＝課題物理名）
+- `challenges/<slug>/<slug>.pdf`（提出用）
+- 任意: `challenges/<slug>/<slug>-マニフェスト.yaml`（プロファイル、含めたファイル、生成日時）
+- 任意: `challenges/<slug>/<slug>.html`（PDF 生成中間）
 
 ### 品質ゲート
 
