@@ -84,19 +84,29 @@ def extract_gaps(summary: str, analysis: str) -> str:
     return "\n".join(parts) if parts else "_残ギャップ節が見つからない。variables の gap を確認。_\n"
 
 
-def extract_sources_index(si: str, limit: int = 40) -> str:
+def extract_sources_index(si: str, limit: int = 200) -> str:
     if not si:
         return "_sources-index.md なし_\n"
     blocks = re.findall(r"### (SRC-\d+)\n(.*?)(?=\n### SRC-|\Z)", si, re.S)
-    lines = ["| SRC | 標題 | 発行主体 | Tier |", "|---|---|---|---|"]
+    lines = [
+        "| SRC | 標題 | 発行主体 | Tier | URL |",
+        "|---|---|---|---|---|",
+    ]
     for sid, body in blocks[:limit]:
         title = re.search(r"- 標題:\s*(.*)", body)
         pub = re.search(r"- 発行主体:\s*(.*)", body)
         tier = re.search(r"- 採用可否 Tier:\s*(.*)", body)
+        url = re.search(r"- URL または取得クエリ:\s*(.*)", body)
+        url_s = url.group(1).strip() if url else ""
+        if url_s:
+            murl = re.search(r"https?://\S+", url_s)
+            url_s = murl.group(0).rstrip(")。,]") if murl else url_s.split()[0]
+        url_s = url_s.replace("|", "\\|")
         lines.append(
             f"| {sid} | {title.group(1).strip() if title else ''} | "
             f"{pub.group(1).strip() if pub else ''} | "
-            f"{tier.group(1).strip() if tier else ''} |"
+            f"{tier.group(1).strip() if tier else ''} | "
+            f"{url_s} |"
         )
     if len(blocks) > limit:
         lines.append(f"\n_他 {len(blocks) - limit} 件は sources-index.md 参照。_\n")
