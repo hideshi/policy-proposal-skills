@@ -12,6 +12,7 @@ policy-proposal-examination (orchestrator)
 ├─ policy-findings-notes
 ├─ policy-option-comparison
 └─ policy-claim-evidence-gate
+（提出時）policy-submission-package
 ```
 
 差し戻し: 各スキルのフェーズ判定表を参照。
@@ -26,3 +27,4 @@ policy-proposal-examination (orchestrator)
 | [`policy-findings-notes`](policy-findings-notes/SKILL.md) | 事実抽出 |
 | [`policy-option-comparison`](policy-option-comparison/SKILL.md) | オプション比較 |
 | [`policy-claim-evidence-gate`](policy-claim-evidence-gate/SKILL.md) | 主張と根拠のゲート |
+| [`policy-submission-package`](policy-submission-package/SKILL.md) | 提出用パッケージと PDF 化 |

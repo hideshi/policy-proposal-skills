@@ -22,6 +22,7 @@
 | `policy-findings-notes` | 事実抽出 |
 | `policy-option-comparison` | 政策オプション比較（既定は順位付けしない） |
 | `policy-claim-evidence-gate` | 主張と根拠のゲート |
+| `policy-submission-package` | 提出用パッケージ定義と PDF 化 |
 
 ## リポジトリの役割分担
 
@@ -37,6 +38,7 @@
 ```bash
 python3 scripts/check_skill_frontmatter.py
 python3 scripts/check_challenge_artifacts.py /path/to/cases-repo/challenges/<slug>
+python3 scripts/build_submission_package.py --challenge-dir /path/to/cases-repo/challenges/<slug> --profile analysis-pilot --pdf
 ```
 
 ## 免責

@@ -2,7 +2,7 @@
 name: policy-proposal-examination
 description: "課題起点の政策案検討の全体手順を案内するときに使う。個別作業は role 別スキルへ委譲するオーケストレータ。"
 metadata:
-  version: "0.3.1"
+  version: "0.3.2"
 ---
 
 # 課題起点の政策案検討（オーケストレータ）
@@ -57,6 +57,10 @@ metadata:
 4. 次に取るデータ（優先度付き）
 5. 開いている WARN/FAIL
 6. 利害（誰が得／損しうるか）の未計測箇所
+
+## 提出パッケージ
+
+外向け・提出用に 1 冊（Markdown + PDF）へまとめるときは [`policy-submission-package`](../policy-submission-package/SKILL.md) に委譲する。中身の定義は `docs/artifact-contracts.md` の「提出パッケージ」。
 
 ## 完了条件
 
