@@ -2,7 +2,7 @@
 name: policy-submission-package
 description: "政策案や実証実験案を外部・社内へ提出するとき、含める情報を契約どおりにパッケージし、1つの PDF にする。"
 metadata:
-  version: "0.1.8"
+  version: "0.1.9"
 ---
 
 # 提出パッケージと PDF 化
@@ -51,7 +51,7 @@ metadata:
 
 ## サンプル
 
-見た目の例: [`examples/submission-package-sample/`](../../../examples/submission-package-sample/)（京都・`analysis-pilot`）。
+見た目の例: [`examples/submission-package-sample/`](../../../examples/submission-package-sample/)（京都・`analysis-pilot`）。権利・免責は同ディレクトリの README を参照。
 
 ## コマンド例
 
