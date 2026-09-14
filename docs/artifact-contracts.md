@@ -136,6 +136,8 @@ Evidence は `F-ID` を優先。無い場合のみ `SRC-ID#locator`。規範的 
 
 ## 提出パッケージ（`<slug>.md` + PDF）
 
+見た目の例: `examples/submission-package-sample/`（京都・`analysis-pilot`）。
+
 提出先（行政・議会・財団・社内など）へ、政策案と／または実証実験案をまとめて出すときの**中身の定義**。生成手順は `skills/ja/policy-submission-package/SKILL.md`。
 
 ### プロファイル

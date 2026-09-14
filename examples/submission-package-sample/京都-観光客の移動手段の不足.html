@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>提出パッケージ</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+
+<style>
+/* Widen usable column; keep modest side padding for readability */
+body {
+  max-width: 56em;
+  padding-left: 18px;
+  padding-right: 18px;
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+@media print {
+  body {
+    max-width: none;
+    padding: 0;
+  }
+}
+@page {
+  size: A4;
+  margin: 14mm 10mm;
+}
+a, a:link, a:visited {
+  color: #0563C1;
+  text-decoration: underline;
+}
+a:hover { color: #03396c; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">提出パッケージ</h1>
+</header>
+<h1 id="提出パッケージ-京都-観光客の移動手段の不足">提出パッケージ:
+京都-観光客の移動手段の不足</h1>
+<ul>
+<li>課題名（物理名）: <code>京都-観光客の移動手段の不足</code></li>
+<li>生成日: 2026-09-14</li>
+<li>プロファイル: <code>analysis-pilot</code></li>
+<li>位置づけ: 提出用パッケージ（リポジトリ正本の要約・再構成）</li>
+</ul>
+<h2 id="提出用の一文">提出用の一文</h2>
+<p>車を持たない来訪者が、京都市内および周辺の観光地（時間帯・季節を含む）において、既存の公共交通・タクシー等では移動需要を十分に充足できず、移動の待ち・迂回・機会損失が生じている。</p>
+<h2 id="利害の原則">利害の原則</h2>
+<p>利害の原則:
+受益側だけを勝ちにしない。労働者・住民・事業者などへの分配・負荷・安全も同じ表で見る。一方的損失を根拠なしに推さない。トレードオフは測り、緩和・補償・中止を設計候補に残す。</p>
+<h2 id="課題と対象">課題と対象</h2>
+<h1 id="課題">課題</h1>
+<ul>
+<li><strong>課題一文</strong>:
+車を持たない来訪者が、京都市内および周辺の観光地（時間帯・季節を含む）において、既存の公共交通・タクシー等では移動需要を十分に充足できず、移動の待ち・迂回・機会損失が生じている。</li>
+<li><strong>望ましくない現状</strong>:
+観光ピーク時のバス混雑・便数不足、タクシーの待ち・稼働不足、代替マイクロモビリティのカバレッジ不足などが京都で観察されうる。他地域（沖縄・河口湖等）は一般化・比較のための参照候補であり、本課題の第一対象ではない。</li>
+<li><strong>利害関係者</strong>:
+来訪者（特に車非保有）、京都市民・近隣住民、<strong>現地で働く労働者</strong>（タクシー・バス運転者、観光・宿泊・飲食等）、バス・タクシー・マイクロモビリティ事業者、京都市・京都府・観光協会、道路・渋滞の影響を受ける主体</li>
+<li><strong>インパクトの観点</strong>:
+来訪者の移動改善に加え、介入が現地労働者の所得・労働時間・雇用・安全に与える影響（正負）も比較対象に含める</li>
+<li><strong>対象外</strong>:
+ライドシェア制度そのものの是非を目的化した議論。全国一律の規制論のみ。貨物物流。京都以外を本丸にした介入設計（比較用データ取得は可）</li>
+<li><strong>検討候補の手段</strong>（任意・課題の下位）:
+ライドシェア、バス増便・ダイヤ改善、タクシー供給対策、LUUP等の電動マイクロモビリティ、その他京都固有の手段。手段ありきではなく課題充足で比較する</li>
+<li><strong>地理スコープ</strong>:
+第一対象は京都（京都市および主要な観光移動エリア）。他地域は対照・外挿用</li>
+<li><strong>具体案リポ確認</strong>: 本ファイルは
+<code>policy-proposals</code>（具体案リポ）側に置かれている</li>
+<li><strong>きっかけメモ</strong>:
+利用者投稿は課題フレーミングの手掛かり（Tier3、根拠に使わない）</li>
+</ul>
+<h2 id="利害の原則-1">利害の原則</h2>
+<p>受益側（例:
+来訪者）の改善だけを勝ちにしない。労働者・住民・事業者などへの分配・負荷・安全も同じ課題の一部として扱う。一方的損失を根拠なしに前提にしない。トレードオフは隠さず、測り、緩和・補償・中止を設計候補に残す。</p>
+<h2 id="いま言える事実">いま言える事実</h2>
+<h2 id="いま言える数字pass">いま言える数字（PASS）</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>内容</th>
+<th>数値</th>
+<th>出典の目安</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>観光客数（R7）</td>
+<td><strong>6,279万人</strong>（日本人5,011 / 外国人1,268）</td>
+<td>F-001/002</td>
+</tr>
+<tr class="even">
+<td>月別繁閑</td>
+<td>最多11月・最少2月、差 <strong>約1.3倍</strong></td>
+<td>F-004/005</td>
+</tr>
+<tr class="odd">
+<td>入洛手段（日本人）</td>
+<td>鉄道81.5%・バス8.5%・車9.3%（公共交通計90%）</td>
+<td>F-006</td>
+</tr>
+<tr class="even">
+<td>市内利用（複数回答）</td>
+<td>バス43.8%・タクシー17.3%・徒歩36.3% 等</td>
+<td>F-007</td>
+</tr>
+<tr class="odd">
+<td>タクシー登録（京都市域）</td>
+<td><strong>5,574台</strong></td>
+<td>F-008</td>
+</tr>
+<tr class="even">
+<td>タクシー不足・創設時公表</td>
+<td>金土日16時–翌5時など最大
+<strong>約490台</strong>（マッチング率90%定義、最小マッチング63%）</td>
+<td>F-009 / F-038</td>
+</tr>
+<tr class="odd">
+<td>自家用車活用の<strong>現行</strong>不足指定</td>
+<td>R8.2.26公表: 月〜金 <strong>1–4時 10台</strong>、日 <strong>0–5時
+50台</strong>。夕方〜夜の通常枠は無し</td>
+<td>F-039</td>
+</tr>
+<tr class="even">
+<td>自家用車活用の許可事業者</td>
+<td>京都市域 <strong>16者</strong>（近畿運輸局一覧・表時点
+R8.7.23）</td>
+<td>F-042</td>
+</tr>
+<tr class="odd">
+<td>市バス</td>
+<td>在籍810両・約34万人/日。営業係数103（赤字59 / 黒字24系統）</td>
+<td>F-014〜016</td>
+</tr>
+<tr class="even">
+<td>運転士</td>
+<td>「非常事態宣言」（R6.9）。必要880に対し実稼働830（▲50）。定年前離職の増加見込み</td>
+<td>F-013, F-033/034</td>
+</tr>
+<tr class="odd">
+<td>労働の文脈</td>
+<td>府タクシー運転者の月々の給与（残業込み）約29.8万円・<strong>平均年齢66.6歳</strong>（高齢化が供給・分配を見るときの核）。自動車運転の有効求人倍率
+<strong>3.67</strong>（京都・常用）</td>
+<td>F-011, F-032</td>
+</tr>
+<tr class="even">
+<td>観光消費（R7）</td>
+<td><strong>2兆474億円</strong></td>
+<td>F-017</td>
+</tr>
+<tr class="odd">
+<td>旅行速度</td>
+<td>市全域は前年差 -0.1km/h。主要観光地は向上例あり（地点差）</td>
+<td>F-018</td>
+</tr>
+<tr class="even">
+<td>シェアサイクル</td>
+<td>ポート 690→<strong>2,046</strong>、利用者約
+<strong>4.3万人/月</strong>（R7.12）</td>
+<td>F-024</td>
+</tr>
+<tr class="odd">
+<td>特定小型原付（制度）</td>
+<td>基準適合車は16歳以上・免許なしで原則車道。歩道は特例＋標識のみ。市は自賠責・ナンバー・税年2,000円</td>
+<td>F-044, F-047</td>
+</tr>
+<tr class="even">
+<td>残念・迷惑</td>
+<td>残念理由の混雑38.5%（日本人）。市民の観光地混雑迷惑70.6%</td>
+<td>F-028/029</td>
+</tr>
+</tbody>
+</table>
+<p>補足:
+タクシー運転者の高齢化（平均66.6歳）は、稼働増（B）でも新規供給（D）でも労働側の前提になる。若返りが進まないまま量だけ求めると負担集中のリスク仮説がある一方、高齢層の所得・働き方の保護が分配評価の中心になる。</p>
+<h2 id="残ギャップ">残ギャップ</h2>
+<h3 id="from-summary">from summary</h3>
+<h2 id="残っている穴">残っている穴</h2>
+<p>待ち時間（分）、キックボードの市公式利用統計、公有地ポートのキックボード同条件適用、職種別離職率、観光関連労働への分配（V12）、増便×旅行速度の因果、夕方拡大の申出実績。</p>
+<hr />
+<p>詳細パス: <code>challenges/京都-観光客の移動手段の不足/</code></p>
+<h2 id="出典一覧要約">出典一覧（要約）</h2>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>SRC</th>
+<th>標題</th>
+<th>発行主体</th>
+<th>Tier</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SRC-001</td>
+<td>令和7年（2025年）京都観光総合調査（本冊）</td>
+<td>京都市 産業観光局観光MICE推進室</td>
+<td>2</td>
+<td><a href="https://www.city.kyoto.lg.jp/sankan/cmsfiles/contents/0000354/354593/honsatsu.pdf" target="_blank" rel="noopener noreferrer">honsatsu.pdf</a></td>
+</tr>
+<tr class="even">
+<td>SRC-002</td>
+<td>令和7年（2025年）京都観光総合調査（概要版）</td>
+<td>京都市 産業観光局観光MICE推進室</td>
+<td>2</td>
+<td><a href="https://www.city.kyoto.lg.jp/sankan/cmsfiles/contents/0000354/354593/gaiyo.pdf" target="_blank" rel="noopener noreferrer">gaiyo.pdf</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-003</td>
+<td>令和6年度京都市交通事業白書 II 自動車運送事業（市バス）</td>
+<td>京都市交通局</td>
+<td>2</td>
+<td><a href="https://www.city.kyoto.lg.jp/kotsu/cmsfiles/contents/0000073/73257/02_jidousha06.pdf" target="_blank" rel="noopener noreferrer">02_jidousha06.pdf</a></td>
+</tr>
+<tr class="even">
+<td>SRC-004</td>
+<td>令和6年度京都市交通事業白書（全体）</td>
+<td>京都市交通局</td>
+<td>2</td>
+<td><a href="https://www.city.kyoto.lg.jp/kotsu/cmsfiles/contents/0000073/73257/hakusyo06.pdf" target="_blank" rel="noopener noreferrer">hakusyo06.pdf</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-005</td>
+<td>市バス各系統の営業係数と旅客数（令和6年度）</td>
+<td>京都市交通局</td>
+<td>2</td>
+<td><a href="https://www.city.kyoto.lg.jp/kotsu/cmsfiles/contents/0000280/280686/R06eigyoukeisuu.pdf" target="_blank" rel="noopener noreferrer">R06eigyoukeisuu.pdf</a></td>
+</tr>
+<tr class="even">
+<td>SRC-006</td>
+<td>令和6年京都府統計書 10-5 タクシー台数及び取扱乗客数</td>
+<td>京都府（資料: 近畿運輸局京都運輸支局）</td>
+<td>2</td>
+<td><a href="https://www.pref.kyoto.jp/tokei/yearly/tokeisyo/ts2024/documents/tokeisyo2024a1005.xlsx" target="_blank" rel="noopener noreferrer">tokeisyo2024a1005.xlsx</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-007</td>
+<td>令和6年京都府統計書 10-7 乗合バス台数と利用者数</td>
+<td>京都府</td>
+<td>2</td>
+<td><a href="https://www.pref.kyoto.jp/tokei/yearly/tokeisyo/ts2024/documents/tokeisyo2024a1007.xlsx" target="_blank" rel="noopener noreferrer">tokeisyo2024a1007.xlsx</a></td>
+</tr>
+<tr class="even">
+<td>SRC-008</td>
+<td>自家用車活用事業に係る営業区域ごとのタクシーの不足車両数</td>
+<td>国土交通省</td>
+<td>1</td>
+<td><a href="https://www.mlit.go.jp/report/press/content/001730147.pdf" target="_blank" rel="noopener noreferrer">001730147.pdf</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-009</td>
+<td>地域交通における「担い手」「移動の足」不足への対応方策について</td>
+<td>国土交通省（審議会資料）</td>
+<td>1</td>
+<td><a href="https://www.mlit.go.jp/policy/shingikai/content/001722463.pdf" target="_blank" rel="noopener noreferrer">001722463.pdf</a></td>
+</tr>
+<tr class="even">
+<td>SRC-010</td>
+<td>市バス・地下鉄事業決算概要（令和6年度）</td>
+<td>京都市交通局</td>
+<td>2</td>
+<td><a href="https://www.city.kyoto.lg.jp/kotsu/cmsfiles/contents/0000020/20415/R6-settlement.pdf" target="_blank" rel="noopener noreferrer">R6-settlement.pdf</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-011</td>
+<td>令和6年賃金構造基本統計調査 一般労働者
+都道府県別第3表（職種特掲）三重～山口</td>
+<td>厚生労働省（e-Stat）</td>
+<td>1</td>
+<td><a href="https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040247954&amp;fileKind=4" target="_blank" rel="noopener noreferrer">file-download</a></td>
+</tr>
+<tr class="even">
+<td>SRC-012</td>
+<td>令和5年版 国土交通白書 第II部 関連データ集</td>
+<td>国土交通省</td>
+<td>1</td>
+<td><a href="https://www.mlit.go.jp/statistics/content/001617551.pdf" target="_blank" rel="noopener noreferrer">001617551.pdf</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-013</td>
+<td>令和6年京都府統計書 10-13 市町村別観光入込客数及び観光消費額</td>
+<td>京都府</td>
+<td>2</td>
+<td><a href="https://www.pref.kyoto.jp/tokei/yearly/tokeisyo/ts2024/documents/tokeisyo2024a1013.xlsx" target="_blank" rel="noopener noreferrer">tokeisyo2024a1013.xlsx</a></td>
+</tr>
+<tr class="even">
+<td>SRC-014</td>
+<td>令和6年京都府観光入込客数等調査報告書</td>
+<td>京都府</td>
+<td>2</td>
+<td><a href="https://www.pref.kyoto.jp/kanko/research/documents/r6zentai.pdf" target="_blank" rel="noopener noreferrer">r6zentai.pdf</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-015</td>
+<td>令和6年観光入込客数及び観光消費額調査結果の概要（京都府）</td>
+<td>京都府</td>
+<td>2</td>
+<td><a href="https://www.pref.kyoto.jp/kanko/research/documents/r6kekkagaiyou.pdf" target="_blank" rel="noopener noreferrer">r6kekkagaiyou.pdf</a></td>
+</tr>
+<tr class="even">
+<td>SRC-016</td>
+<td>令和7年度第1回京都府域渋滞対策協議会 資料3-3
+観光渋滞対策の実施状況</td>
+<td>国土交通省 近畿地方整備局
+京都国道事務所（京都府域渋滞対策協議会。事務局:
+京都国道事務所・京都府・京都市）</td>
+<td>1</td>
+<td><a href="https://www.kkr.mlit.go.jp/kyoto/project/kyougikaiiinkai/jyuutaitaisaku/kantao000000138l-att/R07_01_03-3.pdf" target="_blank" rel="noopener noreferrer">R07_01_03-3.pdf</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-017</td>
+<td>令和7年度第1回京都府域渋滞対策協議会 資料2
+京都府域の交通状況等の変化</td>
+<td>国土交通省 近畿地方整備局
+京都国道事務所（京都府域渋滞対策協議会）</td>
+<td>1</td>
+<td><a href="https://www.kkr.mlit.go.jp/kyoto/project/kyougikaiiinkai/jyuutaitaisaku/kantao000000138l-att/R07_01_02.pdf" target="_blank" rel="noopener noreferrer">R07_01_02.pdf</a></td>
+</tr>
+<tr class="even">
+<td>SRC-018</td>
+<td>令和7年度第1回京都府域渋滞対策協議会 資料4
+令和7年ゴールデンウィークの一般道路の交通状況</td>
+<td>国土交通省 近畿地方整備局 京都国道事務所（分析は道路局 ETC2.0
+プローブ）</td>
+<td>1</td>
+<td><a href="https://www.kkr.mlit.go.jp/kyoto/project/kyougikaiiinkai/jyuutaitaisaku/kantao000000138l-att/R07_01_04.pdf" target="_blank" rel="noopener noreferrer">R07_01_04.pdf</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-019</td>
+<td>京都市自転車総合計画2031（案）</td>
+<td>京都市 建設局自転車政策推進室</td>
+<td>2</td>
+<td><a href="https://www.city.kyoto.lg.jp/templates/pubcomment/cmsfiles/contents/0000352/352903/keikaku.pdf" target="_blank" rel="noopener noreferrer">keikaku.pdf</a></td>
+</tr>
+<tr class="even">
+<td>SRC-020</td>
+<td>シェアサイクルの利用・普及促進に向けた公有地の貸出先企業等の募集（第4回）（報道発表）</td>
+<td>京都市 建設局自転車政策推進室</td>
+<td>2</td>
+<td><a href="https://www.city.kyoto.lg.jp/kensetu/cmsfiles/contents/0000348/348243/071205hodo.pdf" target="_blank" rel="noopener noreferrer">071205hodo.pdf</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-021</td>
+<td>京都市自転車総合計画2025</td>
+<td>京都市 建設局自転車政策推進室</td>
+<td>2</td>
+<td><a href="https://www.city.kyoto.lg.jp/kensetu/cmsfiles/contents/0000290/290719/keikaku_colour_.pdf" target="_blank" rel="noopener noreferrer">keikaku_colour_.pdf</a></td>
+</tr>
+<tr class="even">
+<td>SRC-022</td>
+<td>令和7年 京都観光に関する市民意識調査</td>
+<td>京都市 産業観光局観光MICE推進室</td>
+<td>2</td>
+<td><a href="https://www.city.kyoto.lg.jp/sankan/cmsfiles/contents/0000348/348566/honsatu.pdf" target="_blank" rel="noopener noreferrer">honsatu.pdf</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-023</td>
+<td>令和7（2025）年雇用動向調査結果の概況</td>
+<td>厚生労働省 政策統括官付参事官付雇用・賃金福祉統計室</td>
+<td>1</td>
+<td><a href="https://www.mhlw.go.jp/toukei/itiran/roudou/koyou/doukou/26-2/dl/gaikyou.pdf" target="_blank" rel="noopener noreferrer">gaikyou.pdf</a></td>
+</tr>
+<tr class="even">
+<td>SRC-024</td>
+<td>求人・求職バランスシート（令和8年7月分）</td>
+<td>京都労働局 職業安定部</td>
+<td>1</td>
+<td><a href="https://jsite.mhlw.go.jp/kyoto-roudoukyoku/content/contents/002778723.pdf" target="_blank" rel="noopener noreferrer">002778723.pdf</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-025</td>
+<td>産業交通水道委員会資料 市バス運転士不足 非常事態宣言について</td>
+<td>京都市交通局</td>
+<td>2</td>
+<td><a href="https://www.city.kyoto.lg.jp/kotsu/cmsfiles/contents/0000332/332997/20240927_Committee_materials.pdf" target="_blank" rel="noopener noreferrer">20240927_Committee_materials.pdf</a></td>
+</tr>
+<tr class="even">
+<td>SRC-026</td>
+<td>法人タクシー事業者による交通サービスを補完するための地域の自家用車・一般ドライバーを活用した有償運送の許可に関する取扱いについて（審議会掲載版）</td>
+<td>国土交通省 物流・自動車局長</td>
+<td>1</td>
+<td><a href="https://www.mlit.go.jp/policy/shingikai/content/001722467.pdf" target="_blank" rel="noopener noreferrer">001722467.pdf</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-027</td>
+<td>自家用車活用事業に係る営業区域ごとのタクシーの不足車両数（制度創設時公表）</td>
+<td>国土交通省</td>
+<td>1</td>
+<td><a href="https://www.mlit.go.jp/report/press/content/001730147.pdf" target="_blank" rel="noopener noreferrer">001730147.pdf</a></td>
+</tr>
+<tr class="even">
+<td>SRC-028</td>
+<td>特定小型原動機付自転車に関する主な交通ルールについて</td>
+<td>警察庁</td>
+<td>1</td>
+<td><a href="https://www.npa.go.jp/bureau/traffic/anzen/img/tokuteikogata/tokuteikogata.pdf" target="_blank" rel="noopener noreferrer">tokuteikogata.pdf</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-029</td>
+<td>特定小型原動機付自転車の交通方法等に関する解釈及び留意事項について（通達）</td>
+<td>警察庁（丁交企発第140号）</td>
+<td>1</td>
+<td><a href="https://www.npa.go.jp/laws/notification/koutuu/kouki/kachotsutatsu.pdf" target="_blank" rel="noopener noreferrer">kachotsutatsu.pdf</a></td>
+</tr>
+<tr class="even">
+<td>SRC-030</td>
+<td>自家用車活用事業に係る道路交通法上の取扱い等について（通達）</td>
+<td>警察庁</td>
+<td>1</td>
+<td><a href="https://www.npa.go.jp/laws/notification/koutuu/kouki/R6_4_2_tuutatu.pdf" target="_blank" rel="noopener noreferrer">R6_4_2_tuutatu.pdf</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-031</td>
+<td>配車アプリを使わない日本版ライドシェアの導入ガイドライン</td>
+<td>国土交通省</td>
+<td>1</td>
+<td><a href="https://www.mlit.go.jp/jidosha/content/001763074.pdf" target="_blank" rel="noopener noreferrer">001763074.pdf</a></td>
+</tr>
+<tr class="even">
+<td>SRC-032</td>
+<td>自家用車活用事業の運用改善等について（旧版・事務連絡抜粋）</td>
+<td>国土交通省 物流・自動車局</td>
+<td>1</td>
+<td><a href="https://www.mlit.go.jp/jidosha/content/001751330.pdf" target="_blank" rel="noopener noreferrer">001751330.pdf</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-033</td>
+<td>タクシーが不足する時間帯と不足車両数（大都市部以外の地域）・事前確定運賃係数（近畿運輸局管内）</td>
+<td>近畿運輸局</td>
+<td>1</td>
+<td><a href="https://wwwtb.mlit.go.jp/kinki/content/000369284.pdf" target="_blank" rel="noopener noreferrer">000369284.pdf</a></td>
+</tr>
+<tr class="even">
+<td>SRC-034</td>
+<td>自家用車活用事業における曜日・時間帯及び不足車両数の設定等について（近畿運輸局掲載）</td>
+<td>国土交通省（近畿運輸局が配布掲載）</td>
+<td>1</td>
+<td><a href="https://wwwtb.mlit.go.jp/kinki/content/000369304.pdf" target="_blank" rel="noopener noreferrer">000369304.pdf</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-035</td>
+<td>自家用車活用事業の運用改善等について（近畿運輸局掲載）</td>
+<td>国土交通省（近畿運輸局が配布掲載）</td>
+<td>1</td>
+<td><a href="https://wwwtb.mlit.go.jp/kinki/content/000369305.pdf" target="_blank" rel="noopener noreferrer">000369305.pdf</a></td>
+</tr>
+<tr class="even">
+<td>SRC-036</td>
+<td>近畿運輸局管内における営業区域ごとの不足時間帯・車両数（大都市部・新旧対照）</td>
+<td>近畿運輸局</td>
+<td>1</td>
+<td><a href="https://wwwtb.mlit.go.jp/kinki/content/000369285.pdf" target="_blank" rel="noopener noreferrer">000369285.pdf</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-037</td>
+<td>自家用車活用事業許可事業者一覧（近畿運輸局）</td>
+<td>近畿運輸局</td>
+<td>1</td>
+<td><a href="https://wwwtb.mlit.go.jp/kinki/content/000376307.pdf" target="_blank" rel="noopener noreferrer">000376307.pdf</a></td>
+</tr>
+<tr class="even">
+<td>SRC-038</td>
+<td>特定小型原動機付自転車の安全な利用を促進するための関係事業者ガイドライン</td>
+<td>パーソナルモビリティ安全利用官民協議会（警察庁掲載）</td>
+<td>1</td>
+<td><a href="https://www.npa.go.jp/bureau/traffic/anzen/img/tokuteikogata/guideline.pdf" target="_blank" rel="noopener noreferrer">guideline.pdf</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-039</td>
+<td>地域の自家用車・一般ドライバーを活用した有償運送の許可に関する取扱いについて（現行掲示）</td>
+<td>国土交通省 物流・自動車局</td>
+<td>1</td>
+<td><a href="https://www.mlit.go.jp/jidosha/content/002013832.pdf" target="_blank" rel="noopener noreferrer">002013832.pdf</a></td>
+</tr>
+<tr class="even">
+<td>SRC-040</td>
+<td>自家用車活用事業における運行管理について</td>
+<td>国土交通省</td>
+<td>1</td>
+<td><a href="https://www.mlit.go.jp/jidosha/content/002013834.pdf" target="_blank" rel="noopener noreferrer">002013834.pdf</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-041</td>
+<td>自家用車活用事業における曜日・時間帯及び不足車両数の設定等について</td>
+<td>国土交通省 物流・自動車局旅客課長</td>
+<td>1</td>
+<td><a href="https://www.mlit.go.jp/jidosha/content/002013837.pdf" target="_blank" rel="noopener noreferrer">002013837.pdf</a></td>
+</tr>
+<tr class="even">
+<td>SRC-042</td>
+<td>自家用車活用事業の運用改善等について</td>
+<td>国土交通省 物流・自動車局旅客課長</td>
+<td>1</td>
+<td><a href="https://www.mlit.go.jp/jidosha/content/002013863.pdf" target="_blank" rel="noopener noreferrer">002013863.pdf</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-043</td>
+<td>交通ルールが変わりました！（令和5年以降の道交法改正概要）</td>
+<td>京都市（交通安全啓発）</td>
+<td>2</td>
+<td><a href="https://www.city.kyoto.lg.jp/bunshi/page/0000313900.html" target="_blank" rel="noopener noreferrer">0000313900.html</a></td>
+</tr>
+<tr class="even">
+<td>SRC-044</td>
+<td>特定小型原動機付自転車の税申告（ナンバープレート）手続</td>
+<td>京都市（市税・軽自動車税）</td>
+<td>2</td>
+<td><a href="https://www.city.kyoto.lg.jp/gyozai/page/0000313876.html" target="_blank" rel="noopener noreferrer">0000313876.html</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-045</td>
+<td>特定小型原動機付自転車について（保安基準・性能等確認制度）</td>
+<td>国土交通省 物流・自動車局</td>
+<td>1</td>
+<td><a href="https://www.mlit.go.jp/jidosha/jidosha_fr7_000058.html" target="_blank" rel="noopener noreferrer">jidosha_fr7_000058.html</a></td>
+</tr>
+<tr class="even">
+<td>SRC-046</td>
+<td>京都市自転車走行環境整備ガイドライン（令和4年4月改定）</td>
+<td>京都市 建設局</td>
+<td>2</td>
+<td><a href="https://www.city.kyoto.lg.jp/kensetu/cmsfiles/contents/0000296/296796/bicycleguideline.pdf" target="_blank" rel="noopener noreferrer">bicycleguideline.pdf</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-047</td>
+<td>タクシー事業について（自家用車活用事業／日本版ライドシェア関係情報ハブ）</td>
+<td>国土交通省</td>
+<td>1</td>
+<td><a href="https://www.mlit.go.jp/jidosha/jidosha_tk3_000003.html" target="_blank" rel="noopener noreferrer">jidosha_tk3_000003.html</a></td>
+</tr>
+<tr class="even">
+<td>SRC-048</td>
+<td>法人タクシー関係（自家用車活用事業（日本版ライドシェア）関係）</td>
+<td>近畿運輸局</td>
+<td>1</td>
+<td><a href="https://wwwtb.mlit.go.jp/kinki/tetsuzuki/2015-0112-1353-8.html" target="_blank" rel="noopener noreferrer">2015-0112-1353-8.html</a></td>
+</tr>
+<tr class="odd">
+<td>SRC-049</td>
+<td>特定小型原動機付自転車に関する交通ルール等について</td>
+<td>警察庁</td>
+<td>1</td>
+<td><a href="https://www.npa.go.jp/bureau/traffic/anzen/tokuteikogata.html" target="_blank" rel="noopener noreferrer">tokuteikogata.html</a></td>
+</tr>
+<tr class="even">
+<td>SRC-050</td>
+<td>特定小型原動機付自転車の交通ルール（京都市掲載・京都府警察作成チラシ）</td>
+<td>京都府警察（京都市ページから配布）</td>
+<td>1</td>
+<td><a href="https://www.city.kyoto.lg.jp/bunshi/cmsfiles/contents/0000313/313900/tokuteikogat_syuseiban.pdf" target="_blank" rel="noopener noreferrer">tokuteikogat_syuseiban.pdf</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="課題分析">課題分析</h2>
+<h1
+id="課題分析メモ京都観光客の移動手段の不足">課題分析メモ（京都・観光客の移動手段の不足）</h1>
+<p>更新: 2026-09-14（Sol レビュー反映）<br />
+位置づけ: <strong>政策の採択案ではない。</strong>
+公開情報で押さえた現状の整理と、次に何を測るべきかの土台。<br />
+正本の数字・出典は <code>findings.md</code> /
+<code>sources-index.md</code> /
+<code>institution-memo.md</code>。主張の監査は
+<code>claim-evidence.md</code>（本メモも監査対象に含める）。<br />
+実証の起票は <code>pilot-tickets.md</code>。</p>
+<h2 id="利害の原則根幹">0. 利害の原則（根幹）</h2>
+<p>完全な同時 Win-Win は稀である。それでも案づくりの根幹は次とする。</p>
+<ol type="1">
+<li><strong>受益側だけを勝ちにしない。</strong>
+来訪者の移動改善と、労働者・住民・事業者などへの影響を同じ表で見る。</li>
+<li><strong>一方的に負ける前提を、根拠なしに推し進めない。</strong>
+分配悪化を事実として断定しない一方、リスク仮説は隠さない。</li>
+<li><strong>トレードオフは測る。</strong>
+悪化しうる指標（所得、労働負荷、事故、苦情など）を検証設計に入れる。</li>
+<li><strong>緩和・補償を設計候補にする。</strong>
+悪化が見えたら縮小・中止・補償を選択肢に残す（安全中止基準を含む）。</li>
+</ol>
+<p>現実的な目標は「全員が同時に得をする」より、<strong>片方を良くしつつ、もう片方を悪化させない／悪化を測って抑える</strong>ことである。</p>
+<h2 id="課題-1">1. 課題</h2>
+<p>車を持たない来訪者が、京都市内および周辺の観光地（時間帯・季節を含む）で、既存の公共交通・タクシー等だけでは移動需要を十分に満たせず、待ち・迂回・機会損失が起きうる。</p>
+<p>待ち時間（分）の直接統計はまだ無い。いま言えるのは、タクシーのマッチング不足（定義付き）、観光客の残念理由、市民の混雑認識などからの<strong>示唆</strong>まで（CLM-013
+WARN）。</p>
+<h3 id="測定上の対象定義暫定">1.1 測定上の対象定義（暫定）</h3>
+<p>地理・統計の単位が資料ごとに違うので、同一視しない。</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>軸</th>
+<th>暫定の定義</th>
+<th>注意</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>地域（課題の主戦場）</td>
+<td>京都市内の主要観光移動エリア（寺社・駅前・幹線バス停周辺など）</td>
+<td>「周辺」は観光地アクセスに限る</td>
+</tr>
+<tr class="even">
+<td>地域（タクシー不足指定）</td>
+<td><strong>京都市域交通圏</strong>（市外の一部市町を含む。F-039
+等）</td>
+<td>京都市 ≠ 京都市域交通圏</td>
+</tr>
+<tr class="odd">
+<td>地域（市バス）</td>
+<td>京都市交通局の市バス事業</td>
+<td>交通圏全体のタクシー制度とは母集団が違う</td>
+</tr>
+<tr class="even">
+<td>来訪者属性</td>
+<td>課題文は「車を持たない来訪者」。既存 F-006/007
+は主に<strong>日本人来訪者の手段構成</strong></td>
+<td>車非保有の直接識別は未充足（V07 は手段構成まで）</td>
+</tr>
+<tr class="odd">
+<td>時間帯</td>
+<td>観光ピーク（日中〜夕方）と、制度上の深夜不足帯は分けて扱う</td>
+<td>後者を前者の代理にしない</td>
+</tr>
+<tr class="even">
+<td>移動局面</td>
+<td>市内二次交通・観光地間・帰宅／宿泊地への個別輸送</td>
+<td>入洛の長距離鉄道は課題の主対象外</td>
+</tr>
+</tbody>
+</table>
+<h2 id="現状で押さえる事実">2. 現状で押さえる事実</h2>
+<h3 id="需要側">需要側</h3>
+<ul>
+<li>令和7年の観光客数は
+<strong>6,279万人</strong>（F-001）。月別繁閑は約
+<strong>1.3倍</strong>（F-004/005）。</li>
+<li>日本人の入洛は鉄道中心。市内ではバス利用が厚い一方、タクシーも一定の選択肢（F-006/007）。これは手段構成の記述であり、「車非保有者」そのものの規模ではない。</li>
+</ul>
+<h3 id="供給側既存">供給側（既存）</h3>
+<ul>
+<li>市バスは輸送規模が大きい（F-014/015）。運転士不足（非常事態宣言、必要880に対し実稼働830）は供給制約の候補（F-013,
+F-033/034）。</li>
+<li><strong>営業係数・赤字／黒字系統数（F-016）は財務上の実装制約の候補</strong>であり、混雑や観光移動不足の直接証拠ではない。系統選定では乗車不能・積み残し・遅延などを別途使う。</li>
+<li>京都市域のタクシー登録は
+<strong>5,574台</strong>（F-008）。制度創設時公表では、金土日16時–翌5時などで不足が最大
+<strong>約490台</strong>（マッチング率90%定義、F-009/F-038。公表時点は創設時資料）。</li>
+</ul>
+<h3 id="労働">労働</h3>
+<ul>
+<li>府のタクシー運転者は平均年齢
+<strong>66.6歳</strong>、月々の給与（残業込み）約29.8万円（F-011）。自動車運転従事者の有効求人倍率は京都で
+<strong>3.67</strong>（F-032）。高齢化と求人逼迫は、供給を増やす話の<strong>文脈・制約候補</strong>（因果の順位付けはしない）。</li>
+</ul>
+<h3 id="制度cd">制度（C/D）</h3>
+<ul>
+<li><strong>日本版ライドシェア（自家用車活用）</strong>は、法人タクシー事業者の許可・管理下の枠（道路運送法78条3号）。単独型の一般ドライバー有償は本制度の説明範囲外（F-035/036,
+CLM-034/040）。対応変数は V04（補助）および制度適合 V13。</li>
+<li>京都市域の<strong>現行</strong>不足指定（公表日
+<strong>令和8年2月26日</strong>）は、月〜金 <strong>1〜4時台
+10台</strong>、日 <strong>0〜5時台
+50台</strong>。夕方〜夜の通常枠は無い（F-039,
+CLM-035）。許可事業者は一覧上 <strong>16者</strong>（表時点 R8.7.23,
+F-042）。</li>
+<li><strong>特定小型原付</strong>は、基準適合なら16歳以上・免許なしで原則車道。歩道は特例＋標識のみ。市は自賠責・ナンバー・税年2,000円を整理（F-044/047）。対応変数は
+V06（補助）および制度適合 V14。</li>
+</ul>
+<h2 id="分析上いちばん大事なズレ">3. 分析上いちばん大事なズレ</h2>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>測り方</th>
+<th>母集団</th>
+<th>地理単位</th>
+<th>観測期間の例</th>
+<th>データ範囲</th>
+<th>V-ID</th>
+<th>いま分かること</th>
+<th>これだけでは言えないこと</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>制度上の不足指定</td>
+<td>配車アプリ利用者（定義上）</td>
+<td>京都市域交通圏・曜日・時間帯</td>
+<td>創設時公表 vs <strong>R8.2.26</strong> 公表</td>
+<td>アプリ内マッチング</td>
+<td>V04（補助）, V13</td>
+<td>現行は深夜小規模枠。夕方通常枠なし</td>
+<td>観光スポットの待ち、乗車不能、機会損失の解消</td>
+</tr>
+<tr class="even">
+<td>課題上の不足</td>
+<td>車を持たない来訪者（目標）／現状は観光客・市民の代理指標</td>
+<td>京都市・観光地周辺</td>
+<td>年次調査・単発意識調査など</td>
+<td>調査・自由記述。待ち分は未計測</td>
+<td>V08（partial）</td>
+<td>残念理由・混雑認識などで<strong>示唆</strong></td>
+<td>分単位の待ち、スポット別の充足</td>
+</tr>
+</tbody>
+</table>
+<p>不足指定が縮んだことと、観光夕方の困りが消えたことは<strong>同じではない</strong>（CLM-039）。「ライドシェアを足せば夕方ピークが埋まる」とは、現行通常枠からは言えない。</p>
+<h2 id="オプションの読み順位なし評価設定なし">4.
+オプションの読み（順位なし・評価設定なし）</h2>
+<p>「有力」「本丸」などの順位語は使わない。</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>案</th>
+<th>分析上の位置</th>
+<th>いま言えること</th>
+<th>まだ言えないこと</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>現状維持</td>
+<td>比較の土台</td>
+<td>逼迫・混雑の記述は残る</td>
+<td>不便が必ず拡大する</td>
+</tr>
+<tr class="even">
+<td>A バス</td>
+<td><strong>既存の大容量交通についての検証対象</strong></td>
+<td>輸送・運転士人数は厚い。財務制約は F-016 で別扱い</td>
+<td>増便の効果量、渋滞との因果</td>
+</tr>
+<tr class="odd">
+<td>B タクシー</td>
+<td>既存個別輸送の改善・測定候補</td>
+<td>創設時の時間帯別不足は厚い。<strong>現行の同定義再測定が先</strong></td>
+<td>待ち分の短縮幅、担い手の追加可能性</td>
+</tr>
+<tr class="even">
+<td>C マイクロ</td>
+<td><strong>実証候補</strong>（効果は未検証）</td>
+<td>シェアサイクル拡大と通行ルールは整理可</td>
+<td>課題解決効果、キックボード利用量、代替元</td>
+</tr>
+<tr class="odd">
+<td>D ライドシェア等</td>
+<td><strong>制度内の小レバー。まず運用実態観測</strong></td>
+<td>主体・現行不足指定は言える</td>
+<td>観光夕方の解決、労働分配の影響量。深夜帯の来訪者比率も未確認</td>
+</tr>
+</tbody>
+</table>
+<p>来訪者の便益と、運転・観光関連の労働側は同じ表で見る。分配の悪化を事実として断定しない（CLM-024）。</p>
+<h2 id="このメモから先に進むもの">5. このメモから先に進むもの</h2>
+<ul>
+<li>採択用の「政策パッケージ決定」ではない。</li>
+<li><code>pilot-tickets.md</code>
+では、測定可能性／運用実態観測／効果検証をチケット種別で分ける。</li>
+<li>作業の進める順は単一ランキングにしない。<strong>制度準備度</strong>と<strong>課題への情報価値</strong>の二軸で見る（同ファイル末尾）。</li>
+</ul>
+<h2 id="残ギャップ分析を止めないが断定を止める穴">6.
+残ギャップ（分析を止めないが、断定を止める穴）</h2>
+<ul>
+<li>V08: 待ち時間（分）</li>
+<li>V06:
+キックボードの市公式利用統計、公有地ポートのキックボード同条件適用</li>
+<li>V07: 車非保有者の直接識別（手段構成とのギャップ）</li>
+<li>V09: 職種別離職率・運転者証</li>
+<li>V11:
+京都を第一対象とする理由と対照地域メモ（<strong>needed・本メモでも未充足</strong>）</li>
+<li>V12: 観光関連労働への分配</li>
+<li>V13/V14: 制度 Finding
+は取得済みだが、変数インベントリ上の正式紐づけは追記段階</li>
+<li>増便×旅行速度の因果</li>
+<li>D の夕方拡大の申出実績、各社への個別配分台数</li>
+</ul>
+<h2 id="実証実験の起票">実証実験の起票</h2>
+<h1 id="実証実験の起票素案">実証実験の起票（素案）</h1>
+<p>更新: 2026-09-14（Sol レビュー反映）<br />
+位置づけ:
+実装指示書ではない。<strong>何を・どの範囲で・何と比べて測るか</strong>の起票ドラフト。<br />
+詳細の制度条件は <code>institution-memo.md</code>。課題との接続は
+<code>analysis.md</code>。</p>
+<h2 id="共通ルール">共通ルール</h2>
+<p><strong>利害の原則:</strong>
+来訪者指標の改善だけを成功にしない。労働・住民・事業者側の悪化リスクを副次または主監視に入れ、閾値超で縮小・中止できる設計にする（<code>analysis.md</code>
+§0）。</p>
+<ul>
+<li>効果・分配は測るまで断定しない</li>
+<li>制度枠外（単独型有償、基準外キックボードの免許なし運転など）は対象にしない</li>
+<li><strong>制度指標</strong>（マッチング率・不足車両数）と
+<strong>課題指標</strong>（待ち分・乗車不能・目的地到達など V08
+系）を併記する。前者の改善だけを課題解決と呼ばない</li>
+<li>来訪者／住民／運転者を識別できる記録項目を先に決める</li>
+<li>結果は <code>findings.md</code> に事実として戻し、効果断定は
+<code>claim-evidence.md</code> を通す（本起票も監査対象）</li>
+</ul>
+<h2
+id="共通必須欄各チケットに埋める">共通必須欄（各チケットに埋める）</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>欄</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>状態</td>
+<td><code>DRAFT</code> / <code>DATA-BLOCKED</code> /
+<code>LEGAL-BLOCKED</code> / <code>READY</code></td>
+</tr>
+<tr class="even">
+<td>チケット種別</td>
+<td><code>測定可能性</code> / <code>運用実態観測</code> /
+<code>効果検証</code>（混在させない。段階を分ける）</td>
+</tr>
+<tr class="odd">
+<td>検証仮説</td>
+<td>何がどう変わるという仮説か（効果検証のみ必須）</td>
+</tr>
+<tr class="even">
+<td>推定対象</td>
+<td>誰の・どのアウトカムか</td>
+</tr>
+<tr class="odd">
+<td>対象者・介入単位・観測単位</td>
+<td>例: 系統、エリア、時間帯、事業者</td>
+</tr>
+<tr class="even">
+<td>介入内容（固定版）</td>
+<td>効果検証では<strong>一つに固定</strong>。観測のみなら「介入なし」</td>
+</tr>
+<tr class="odd">
+<td>主指標</td>
+<td><strong>一つ</strong>。算式・分母・取得頻度・データ源</td>
+</tr>
+<tr class="even">
+<td>副次指標</td>
+<td>課題指標／制度指標／安全／分配など</td>
+</tr>
+<tr class="odd">
+<td>ベースライン</td>
+<td>取得方法と時点</td>
+</tr>
+<tr class="even">
+<td>目標または最小検出効果</td>
+<td>未定なら
+<code>gap</code>（測定可能性チケットでは「取得できること」で可）</td>
+</tr>
+<tr class="odd">
+<td>対照と割付</td>
+<td>確定した対照。未定なら <code>DATA-BLOCKED</code></td>
+</tr>
+<tr class="even">
+<td>交絡の扱い</td>
+<td>天候・曜日・イベント・繁閑・需要量など</td>
+</tr>
+<tr class="odd">
+<td>実施前ゲート</td>
+<td>制度・許認可・労務・データ利用</td>
+</tr>
+<tr class="even">
+<td>個人情報・営業情報</td>
+<td>匿名化、同意、保存期間、アクセス、集計公表</td>
+</tr>
+<tr class="odd">
+<td>安全中止基準</td>
+<td>事故・苦情の閾値など</td>
+</tr>
+<tr class="even">
+<td>実施主体・意思決定者・費用・期限</td>
+<td>分かる範囲。不明は <code>gap</code></td>
+</tr>
+<tr class="odd">
+<td>対応 ID</td>
+<td>V-ID / CLM-ID / OPT-ID</td>
+</tr>
+<tr class="even">
+<td>結果の保存予定</td>
+<td>新規 SRC、locator、sha256、F-ID の置き場</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ticket-a-市バスピーク系統の供給改善段階設計">TICKET-A —
+市バス：ピーク系統の供給改善（段階設計）</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>欄</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>状態</td>
+<td><code>DRAFT</code>（系統選定データ待ち → 選定後も
+<code>DATA-BLOCKED</code> の可能性）</td>
+</tr>
+<tr class="even">
+<td>チケット種別</td>
+<td>まず <code>測定可能性</code>（混雑・遅延の現行値）。通ったあと別版で
+<code>効果検証</code></td>
+</tr>
+<tr class="odd">
+<td>目的</td>
+<td>観光ピーク系統で、<strong>単一の供給変更</strong>が混雑または遅延をどう変えるかを測れるようにする</td>
+</tr>
+<tr class="even">
+<td>なぜ今</td>
+<td>輸送・運転士人数の記述は厚い。効果量は未検証</td>
+</tr>
+<tr class="odd">
+<td>推定対象</td>
+<td>当該系統の利用者（来訪者／住民の識別は可能な範囲で）</td>
+</tr>
+<tr class="even">
+<td>範囲</td>
+<td>京都市バスの
+<strong>1系統（または上下で1セット）</strong>。選定は実証前ゲート</td>
+</tr>
+<tr class="odd">
+<td><strong>系統選定ゲート（必須）</strong></td>
+<td><strong>赤字・営業係数では選ばない</strong>（F-016
+は財務制約の参考）。乗車不能・積み残し・遅延・車内混雑などサービス指標で候補を作る</td>
+</tr>
+<tr class="even">
+<td>介入（効果検証版・固定は一つ）</td>
+<td>A1 増便 <strong>または</strong> A2
+運行時間帯の延伸。同時実施しない。運転士確保策は「実施条件の記録」であり介入本体に混ぜない</td>
+</tr>
+<tr class="odd">
+<td>主指標（効果検証）</td>
+<td><strong>系統遅延（分）</strong> または
+<strong>乗車不能／積み残し件数</strong> のどちらか一つに固定</td>
+</tr>
+<tr class="even">
+<td>副次</td>
+<td>車内混雑の代理指標、実稼働運転士数（制約監視）、苦情、近傍タクシーマッチング（参考・制度指標）</td>
+</tr>
+<tr class="odd">
+<td>対照</td>
+<td>同系統の導入前期間を基本。類似系統対照は選定理由を文書化。天候・イベントを共変量または層別</td>
+</tr>
+<tr class="even">
+<td>交絡</td>
+<td>曜日、繁閑、イベント、臨時ダイヤ、需要ショック</td>
+</tr>
+<tr class="odd">
+<td>実施前ゲート</td>
+<td>ダイヤ変更権限、労務・協定、計測データ（乗降・遅延）の利用許諾</td>
+</tr>
+<tr class="even">
+<td>個人情報</td>
+<td>乗降・OD を扱う場合の匿名化・集計単位</td>
+</tr>
+<tr class="odd">
+<td>安全中止</td>
+<td>運転士の法定・協定を超える負荷が見えたら中止／縮小</td>
+</tr>
+<tr class="even">
+<td>対応 ID</td>
+<td>V03, V08, V09 / OPT-A / CLM-016 ほか</td>
+</tr>
+<tr class="odd">
+<td>成功の見方</td>
+<td>測定可能性: 主指標が取れる。効果検証:
+固定介入の前後比較が文書化できる（「効いた」断定は別ゲート）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ticket-b-タクシー不足再測定-単一改善の効果検証">TICKET-B —
+タクシー：不足再測定 → 単一改善の効果検証</h2>
+<p>全体: 状態は再測定前 <code>DATA-BLOCKED</code>
+になりやすい。<strong>B0（測定可能性）を先に、B1（効果検証）は後。</strong></p>
+<h3 id="b0-先行再測定必須介入なし">B0 —
+先行再測定（必須・介入なし）</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>欄</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>状態</td>
+<td><code>DRAFT</code> / データ契約前は <code>DATA-BLOCKED</code></td>
+</tr>
+<tr class="even">
+<td>チケット種別</td>
+<td><code>測定可能性</code></td>
+</tr>
+<tr class="odd">
+<td>目的</td>
+<td>課題上の待ち・乗れなさと、制度上のマッチングを<strong>両方</strong>の現行値で押さえる</td>
+</tr>
+<tr class="even">
+<td>なぜ今</td>
+<td>創設時の時間帯別不足は厚いが、<strong>現行の同定義値が無い</strong>。待ち分は課題接続上必須</td>
+</tr>
+<tr class="odd">
+<td>介入</td>
+<td>なし（観測のみ）</td>
+</tr>
+<tr class="even">
+<td>主指標</td>
+<td><strong>待ち時間（分）または配車失敗率</strong>（来訪者側・課題指標）。取得設計を先に固定</td>
+</tr>
+<tr class="odd">
+<td>副次（制度指標）</td>
+<td>マッチング率・不足車両数（SRC-008 / SRC-036
+と同定義・同一アプリ範囲）</td>
+</tr>
+<tr class="even">
+<td>範囲の仮置き</td>
+<td>創設時に不足が大きかった帯（金土日夕方〜深夜など）を<strong>再測定候補</strong>にする。現行値が小さければ
+B1 の対象帯を見直す</td>
+</tr>
+<tr class="odd">
+<td>アプリ外</td>
+<td>流し・電話・駅待ちなどアプリ外需要は<strong>別カウント</strong>（取れる範囲）</td>
+</tr>
+<tr class="even">
+<td>実施前ゲート</td>
+<td>アプリ／事業者データの利用契約、待ち分調査の設計・倫理</td>
+</tr>
+<tr class="odd">
+<td>個人情報・営業情報</td>
+<td>配車ログの集計単位と開示範囲</td>
+</tr>
+<tr class="even">
+<td>対応 ID</td>
+<td>V04, V08 / OPT-B / CLM-019</td>
+</tr>
+<tr class="odd">
+<td>成功の見方</td>
+<td>現行ベースラインと待ち分（または失敗率）が時点付きで残る</td>
+</tr>
+</tbody>
+</table>
+<h3 id="b1-効果検証b0-の後介入は一つ">B1 — 効果検証（B0
+の後・介入は一つ）</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>欄</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>状態</td>
+<td>B0 完了まで <code>DRAFT</code></td>
+</tr>
+<tr class="even">
+<td>チケット種別</td>
+<td><code>効果検証</code></td>
+</tr>
+<tr class="odd">
+<td>介入（一つに固定）</td>
+<td>シフト改善 <strong>または</strong> インセンティブ
+<strong>または</strong> アプリ運用改善。同時に三つやらない</td>
+</tr>
+<tr class="even">
+<td>主指標</td>
+<td>B0 で採用した課題指標（待ち分または失敗率）を継続</td>
+</tr>
+<tr class="odd">
+<td>副次</td>
+<td>マッチング率、実車、運転者所得、苦情</td>
+</tr>
+<tr class="even">
+<td>対照</td>
+<td>同曜日の導入前後を基本。隣接帯は需要構成が違うため、使うなら理由を書く</td>
+</tr>
+<tr class="odd">
+<td>交絡</td>
+<td>天候、イベント、観光客数の週次変動</td>
+</tr>
+<tr class="even">
+<td>実施前ゲート</td>
+<td>運賃・インセンティブの規制、労務、B0 と同じデータ契約</td>
+</tr>
+<tr class="odd">
+<td>安全中止</td>
+<td>重大事故・苦情スパイク</td>
+</tr>
+<tr class="even">
+<td>制約</td>
+<td>平均年齢66.6歳（F-011）。量だけ求めると負担集中の仮説</td>
+</tr>
+<tr class="odd">
+<td>対応 ID</td>
+<td>V04, V08, V09 / OPT-B</td>
+</tr>
+<tr class="even">
+<td>成功の見方</td>
+<td>単一介入の前後が課題指標で比較できる（「効いた」断定は
+claim–evidence 経由）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ticket-c-マイクロモビリティアーム分離のエリア実証">TICKET-C —
+マイクロモビリティ：アーム分離のエリア実証</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>欄</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>状態</td>
+<td><code>DRAFT</code>（占用・協定未確認 → 多くは
+<code>LEGAL-BLOCKED</code> になりうる）</td>
+</tr>
+<tr class="even">
+<td>チケット種別</td>
+<td>まず <code>測定可能性</code>。許可後に
+<code>効果検証</code>（アームごと）</td>
+</tr>
+<tr class="odd">
+<td>目的</td>
+<td>短距離二次交通が、観光ホットスポット間の移動不足をどれだけ緩和するかを測る</td>
+</tr>
+<tr class="even">
+<td>アーム</td>
+<td><strong>C-cycle（シェアサイクル）</strong> と
+<strong>C-tokutei（特定小型原付）</strong>
+を<strong>別チケット／別アーム</strong>にする。混ぜて効果を語らない</td>
+</tr>
+<tr class="odd">
+<td>範囲</td>
+<td>観光ホットスポット周辺の限定エリア。<strong>原則車道。歩道は特例標識区間のみ</strong>（C-tokutei）</td>
+</tr>
+<tr class="even">
+<td>介入（効果検証・アームごと）</td>
+<td>ポート配置・案内・安全周知など、アームごとに固定したパッケージ</td>
+</tr>
+<tr class="odd">
+<td>主指標</td>
+<td><strong>旅行完了率</strong>（意図した OD を完了できた割合）または
+<strong>移動時間（分）</strong> のどちらか一つ</td>
+</tr>
+<tr class="even">
+<td>副次</td>
+<td>貸出回数、平均距離・時間、代替元交通手段、利用できなかった理由、ポート回転率</td>
+</tr>
+<tr class="odd">
+<td>安全指標</td>
+<td>対人事故・歩行者苦情・放置違反を
+<strong>千回利用あたり</strong>（または千kmあたり）で定義</td>
+</tr>
+<tr class="even">
+<td>制度指標との関係</td>
+<td>バス混雑・タクシーマッチングは副次参考。主成功条件にしない</td>
+</tr>
+<tr class="odd">
+<td>対照</td>
+<td>導入前期間、または未導入の類似エリア（選定理由を文書化）</td>
+</tr>
+<tr class="even">
+<td>交絡</td>
+<td>天候、坂、荷物、イベント、既存シェアの自然増</td>
+</tr>
+<tr class="odd">
+<td>実施前ゲート</td>
+<td>公有地占用、個別協定、追加走行禁止の有無、基準適合車のみ貸出、年齢確認</td>
+</tr>
+<tr class="even">
+<td>個人情報</td>
+<td>事業者ログの OD・端末 ID の扱い</td>
+</tr>
+<tr class="odd">
+<td>安全中止</td>
+<td>千回あたり事故／重大苦情が事前閾値を超えたら当該アーム停止</td>
+</tr>
+<tr class="even">
+<td>対応 ID</td>
+<td>V06, V08, V14 / OPT-C / CLM-037,038 ほか</td>
+</tr>
+<tr class="odd">
+<td>成功の見方</td>
+<td>測定可能性: 主指標と安全レートが取れる。効果検証:
+アーム別に課題指標が比較できる。幹線代替の可否はデータが出るまで書かない</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2
+id="ticket-d-自家用車活用現行枠の運用実態観測効果検証は分離">TICKET-D —
+自家用車活用：現行枠の運用実態観測（効果検証は分離）</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>欄</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>状態</td>
+<td><code>DRAFT</code>（個別配分台数未確認 → <code>DATA-BLOCKED</code> /
+<code>LEGAL-BLOCKED</code> の可能性）</td>
+</tr>
+<tr class="even">
+<td>チケット種別</td>
+<td><strong><code>運用実態観測</code>（本チケット）</strong>。運用改善の効果検証は
+<strong>TICKET-D1</strong> に分離。臨時措置は
+<strong>TICKET-D2</strong></td>
+</tr>
+<tr class="odd">
+<td>目的</td>
+<td>現行通常枠で、何台・何時間が動き、誰が乗っているかを記述する。<strong>観光課題の解決を目的にしない</strong>（来訪者比率が小さい場合は特に）</td>
+</tr>
+<tr class="even">
+<td>範囲（必須）</td>
+<td>月〜金 <strong>1〜4時台</strong>（不足指定10台）、日
+<strong>0〜5時台</strong>（50台）（F-039, 公表
+R8.2.26）。許可タクシー事業者の管理下のみ</td>
+</tr>
+<tr class="odd">
+<td>介入</td>
+<td><strong>なし</strong>（観測のみ）。「運用改善」は D1</td>
+</tr>
+<tr class="even">
+<td>主指標</td>
+<td><strong>実働車両時間</strong>（台×時間）</td>
+</tr>
+<tr class="odd">
+<td>副次・算式に注意</td>
+<td>(1) 需給: マッチング率・不足車両数（F-039
+定義）は<strong>需給指標</strong>として別掲。(2) <strong>消化率の分母に
+F-039 の不足台数を使わない</strong>。消化率を出すなら
+<code>実働車両時間 / 各社に通知された使用可能車両時間</code>（個別通知の取得がゲート）</td>
+</tr>
+<tr class="even">
+<td>課題指標</td>
+<td>待ち分・失敗率は取れる範囲で併記。あわせて
+<strong>利用者区分（来訪者／住民／不明）</strong>
+を可能な方法で識別。来訪者比率が低い場合、観光課題への効果検証は目的から外す</td>
+</tr>
+<tr class="odd">
+<td>分配・安全</td>
+<td>同帯の法人タクシー実車・所得（取れる範囲）、事故・クレーム</td>
+</tr>
+<tr class="even">
+<td>対照</td>
+<td>観測フェーズでは「対照による効果推定」を主目的にしない。記述の比較用に隣接帯を見る場合は、制度条件・需要構成の差を明記</td>
+</tr>
+<tr class="odd">
+<td>実施前ゲート</td>
+<td>個別配分台数・経過措置の確認、運輸局・事業者の協力、データ項目の合意</td>
+</tr>
+<tr class="even">
+<td>個人情報・営業情報</td>
+<td>事業者別実働の集計公表基準</td>
+</tr>
+<tr class="odd">
+<td>対応 ID</td>
+<td>V04, V08, V09, V13 / OPT-D / CLM-035,036,039</td>
+</tr>
+<tr class="even">
+<td>成功の見方</td>
+<td>実働・利用者区分・需給指標が時点付きで残る。課題解決の断定はしない</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ticket-d1-将来運用改善の効果検証">TICKET-D1 —
+（将来）運用改善の効果検証</h3>
+<ul>
+<li>種別: <code>効果検証</code></li>
+<li>前提: D の観測でベースラインとデータ取得が通っていること</li>
+<li>介入: <strong>一つに固定</strong>した運用変更（例:
+特定帯のシフト誘導）。内容が決まるまで起票を <code>DRAFT</code>
+のままにする</li>
+<li>主指標: D で採用した課題指標または実働のどちらを見るかを固定</li>
+<li>消化率を使う場合も分母は通知済み使用可能車両時間</li>
+</ul>
+<h3 id="ticket-d2-雨天酷暑イベント臨時措置">TICKET-D2 —
+雨天・酷暑・イベント臨時措置</h3>
+<ul>
+<li>種別: まず <code>運用実態観測</code>。効果検証にするなら D
+と同様に介入を固定してから</li>
+<li>通常枠（D）とプロトコルを混ぜない。申出根拠と台数を記録（F-041）</li>
+<li>観光ピークへの外挿はしない</li>
+</ul>
+<hr />
+<h2
+id="進める順単一ランキングではない">進める順（単一ランキングではない）</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>チケット</th>
+<th>制度準備度（目安）</th>
+<th>課題への情報価値（目安）</th>
+<th>読み</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>D（観測）</td>
+<td>高（時間帯・主体が公式）</td>
+<td>低〜中（深夜。来訪者比率は未確認）</td>
+<td>制度・データ管の練習には向きやすい。観光ピーク学習は限定的</td>
+</tr>
+<tr class="even">
+<td>B0（再測定＋待ち）</td>
+<td>中（データ契約が壁）</td>
+<td><strong>高</strong>（V08 を直接埋めうる）</td>
+<td>課題文の WARN を一段はっきりさせる</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>中〜低（占用・協定が壁）</td>
+<td>中（短距離二次。アーム分離が前提）</td>
+<td>LEGAL ゲートが先</td>
+</tr>
+<tr class="even">
+<td>A</td>
+<td>中（系統選定・労務）</td>
+<td>中〜高（大容量。選定が正しければ）</td>
+<td>財務指標で系統を選ばない</td>
+</tr>
+<tr class="odd">
+<td>D1/D2</td>
+<td>D 依存</td>
+<td>条件次第</td>
+<td>観測のあと</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="次の実務">次の実務</h2>
+<ol type="1">
+<li>各チケットの実施前ゲートをチェックリスト化し、状態を
+<code>DRAFT</code> → <code>DATA-BLOCKED</code> /
+<code>LEGAL-BLOCKED</code> / <code>READY</code> に更新する</li>
+<li>B0 と D の観測で「取れるデータ」を先に確定する</li>
+<li>効果検証版は介入を一つに固定してから期間を切る</li>
+<li><code>claim-evidence.md</code> で本起票の強い言い回しを監査する</li>
+</ol>
+<hr />
+<p>本 PDF/Markdown は提出用パッケージである。数値の正本は課題フォルダの
+findings / sources を優先する。</p>
+</body>
+</html>

@@ -28,10 +28,15 @@
 
 | リポジトリ | 中身 | 公開の想定 |
 |---|---|---|
-| **本リポ** | 手順・契約・雛形・検査 | いずれ公開 |
+| **本リポ** | 手順・契約・雛形・検査・提出サンプル | 公開 |
 | 具体案リポ | 課題ごとの出典・事実・政策案 | 非公開でも可 |
 
 開始前に具体案リポのルートを確定すること。本スキル集自身への実データ書き込みは禁止。
+
+## サンプル
+
+- 課題フォルダ雛形: [`examples/challenge-template/`](examples/challenge-template/)
+- 提出パッケージ（京都・analysis-pilot）: [`examples/submission-package-sample/`](examples/submission-package-sample/)
 
 ## 検査
 
