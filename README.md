@@ -35,6 +35,14 @@
 
 開始前に具体案リポのルートを確定すること。本スキル集自身への実データ書き込みは禁止。
 
+## 対応ツール
+
+スキル正本は `skills/ja/`。Claude Code / Codex / Cursor / Antigravity 向けの探索パスはシンボリックリンクで接続している。詳細は [`docs/tool-adapters.md`](docs/tool-adapters.md)。
+
+```bash
+python3 scripts/sync_tool_skill_links.py
+```
+
 ## サンプル
 
 - 課題フォルダ雛形: [`examples/challenge-template/`](examples/challenge-template/)

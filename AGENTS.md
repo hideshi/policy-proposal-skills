@@ -15,3 +15,7 @@
 ## スキル一覧
 
 [`skills/ja/README.md`](skills/ja/README.md)
+
+## ツールアダプタ
+
+`.agents/skills`・`.claude/skills`・`.cursor/skills` は `skills/ja` へのリンク。スキルを追加したら `python3 scripts/sync_tool_skill_links.py` を実行する。詳細は [`docs/tool-adapters.md`](docs/tool-adapters.md)。
