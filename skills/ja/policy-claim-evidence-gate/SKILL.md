@@ -9,7 +9,7 @@ metadata:
 
 ## 目的
 
-Claim と Evidence の対応を監査する。**原稿を勝手に書き換えず**、判定と差し戻し先を返す。
+Claim と Evidence の対応を監査する。**原稿を書き換えず**、判定と差し戻し先を返す。
 
 スキーマ正本: [`docs/artifact-contracts.md`](../../../docs/artifact-contracts.md)
 
@@ -26,7 +26,7 @@ Claim と Evidence の対応を監査する。**原稿を勝手に書き換え�
 4. 対応 `direct/indirect/gap`、断定の強さ、判定 `PASS/WARN/FAIL`、差し戻し先を記入
 5. 規範的 Claim は評価基準への参照が無ければ FAIL または WARN
 6. 評価語には比較基準を要求する
-7. FAIL の Claim はトーンを落とすか削除するよう差し戻す（本ゲートは提案まで）
+7. FAIL の Claim は断定の強さを下げるか削除するよう差し戻す（本ゲートは提案まで）
 8. `legal-institutional` の FAIL／WARN／`assert` は契約に従う。本ゲートは法的助言をしない
 
 ## フェーズ判定

@@ -18,9 +18,9 @@ metadata:
 
 ## 事前条件
 
-- 書き込み先は**具体案リポ**の `challenges/<slug>/`
-- スキル集リポ自身への実データ書き込みは禁止
-- PDF エンジン: 推奨 `pandoc` HTML → `weasyprint`（クリック可能なリンク注釈・青＋下線のため）。だめなら `pandoc` + `xelatex`（日本語は Noto CJK 等）。どちらも無ければ HTML のみで PDF は `gap`。余白はスクリプト既定（HTML 横幅 56em・左右 18px、PDF `@page` 上下 14mm・左右 10mm）
+- 書き込み先は**具体案リポジトリ**の `challenges/<slug>/`
+- スキル集リポジトリ自身への実データ書き込みは禁止
+- PDF エンジン: 推奨 `pandoc` HTML → `weasyprint`（クリック可能なリンク注釈・青＋下線のため）。利用できない場合は `pandoc` + `xelatex`（日本語は Noto CJK 等）。どちらも無ければ HTML のみで PDF は `gap`。余白はスクリプト既定（HTML 横幅 56em・左右 18px、PDF `@page` 上下 14mm・左右 10mm）
 
 ## 手順
 
@@ -35,12 +35,12 @@ metadata:
 
 | | |
 |---|---|
-| 必須入力 | 課題 slug、プロファイル、具体案リポ上の該当ファイル |
+| 必須入力 | 課題 slug、プロファイル、具体案リポジトリ上の該当ファイル |
 | 出力 | `<課題物理名>.md`、可能なら `.pdf`、`<課題物理名>-マニフェスト.yaml` |
-| PASS | 契約セクションが揃い、野良数値が無く、利害の原則が冒頭にある。PDF または「PDF 未生成理由」が明示 |
-| WARN | 必須に近いファイルが partial（例: pilot-tickets が DRAFT だらけ）だが提出用に注記した |
+| PASS | 契約セクションが揃い、出典のない数値が無く、利害の原則が冒頭にある。PDF または「PDF 未生成理由」が明示 |
+| WARN | 必須に近いファイルが partial（例: pilot-tickets が 多くが DRAFT）だが提出用に注記した |
 | FAIL | プロファイルと中身が不一致、効果断定の未監査転載、sources 全文の同梱 |
-| 差し戻し先 | 欠けに応じて analysis / options / pilot-tickets / claim-evidence |
+| 差し戻し先 | 不足箇所に応じて analysis / options / pilot-tickets / claim-evidence |
 | 完了条件 | FAIL でない。提出前に利用者確認 |
 
 ## 成果物
