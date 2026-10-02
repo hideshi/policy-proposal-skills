@@ -45,9 +45,9 @@ PROFILES = {
 }
 
 PRINCIPLE = (
-    "利害の原則: 受益側だけを勝ちにしない。"
-    "労働者・住民・事業者などへの分配・負荷・安全も同じ表で見る。"
-    "一方的損失を根拠なしに推さない。トレードオフは測り、緩和・補償・中止を設計候補に残す。"
+    "利害の原則: 受益側の改善だけで成功としない。"
+    "労働者・住民・事業者などへの分配・負荷・安全も同じ課題の一部として扱う。"
+    "一方的損失を根拠なしに推し進めない。トレードオフは測り、緩和・補償・中止を設計候補に残す。"
 )
 
 
@@ -82,7 +82,7 @@ def extract_gaps(summary: str, analysis: str) -> str:
         m = re.search(r"## 残.*?(?=\n## |\Z)", text, re.S)
         if m:
             parts.append(f"### from {label}\n\n{m.group(0).strip()}\n")
-    return "\n".join(parts) if parts else "_残ギャップ節が見つからない。variables の gap を確認。_\n"
+    return "\n".join(parts) if parts else "_未解決のギャップの節が見つからない。variables の gap を確認。_\n"
 
 
 def link_label_from_url(url: str) -> str:
@@ -201,7 +201,7 @@ def build_md(challenge_dir: Path, profile: str, title: str | None) -> tuple[str,
         parts.append("## いま言える事実\n\n" + extract_summary_facts(summary))
 
     if "gaps" in included:
-        parts.append("## 残ギャップ\n\n" + extract_gaps(summary, analysis))
+        parts.append("## 未解決のギャップ\n\n" + extract_gaps(summary, analysis))
 
     if "sources" in included:
         parts.append("## 出典一覧（要約）\n\n" + extract_sources_index(sources_index))
