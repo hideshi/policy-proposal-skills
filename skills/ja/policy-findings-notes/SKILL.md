@@ -2,7 +2,7 @@
 name: policy-findings-notes
 description: "保存済みソースから変数ごとの事実を findings.md に抜き出すとき（解釈や政策結論を混入させない）に使う。"
 metadata:
-  version: "0.2.0"
+  version: "0.2.1"
 ---
 
 # 政策事実抽出
@@ -25,6 +25,7 @@ metadata:
 3. 加工値は原値と算式を残す
 4. 解釈・政策結論は書かない
 5. 必須変数が Finding で望ましい粒度を満たしたら `variables.md` を `verified` に更新。足りなければ `partial` / `gap`
+6. 条文は契約の「条文の Finding」に従う。当てはめは書かず、`legal-institutional` の Claim にする
 
 ## フェーズ判定
 

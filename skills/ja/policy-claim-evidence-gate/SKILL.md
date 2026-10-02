@@ -2,7 +2,7 @@
 name: policy-claim-evidence-gate
 description: "政策メモやオプション比較の断定・評価語について、保存済み根拠との対応を判定し、根拠不足の断定を止めるときに使う。"
 metadata:
-  version: "0.2.0"
+  version: "0.2.1"
 ---
 
 # 政策 claim–evidence ゲート
@@ -27,6 +27,7 @@ Claim と Evidence の対応を監査する。**原稿を勝手に書き換え�
 5. 規範的 Claim は評価基準への参照が無ければ FAIL または WARN
 6. 評価語には比較基準を要求する
 7. FAIL の Claim はトーンを落とすか削除するよう差し戻す（本ゲートは提案まで）
+8. `legal-institutional` の FAIL／WARN／`assert` は契約に従う。本ゲートは法的助言をしない
 
 ## フェーズ判定
 
@@ -34,7 +35,7 @@ Claim と Evidence の対応を監査する。**原稿を勝手に書き換え�
 |---|---|
 | 必須入力 | 監査対象文、findings / sources |
 | 出力 | `claim-evidence.md` |
-| PASS | 強い断定がすべて direct + 適切な種別 |
+| PASS | 強い断定がすべて direct + 適切な種別（`legal-institutional` の `assert` は契約） |
 | WARN | indirect や基準不足が残るが明示 |
 | FAIL | 未保存数値、Tier3、locator なし、規範 Claim の基準なし |
 | 差し戻し先 | Phase 4/5 または option の評価設定 |
