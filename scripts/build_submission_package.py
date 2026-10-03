@@ -79,7 +79,7 @@ def extract_summary_facts(summary: str) -> str:
 def extract_gaps(summary: str, analysis: str) -> str:
     parts = []
     for label, text in (("summary", summary), ("analysis", analysis)):
-        m = re.search(r"## 残.*?(?=\n## |\Z)", text, re.S)
+        m = re.search(r"## (?:残|未解決).*?(?=\n## |\Z)", text, re.S)
         if m:
             parts.append(f"### from {label}\n\n{m.group(0).strip()}\n")
     return "\n".join(parts) if parts else "_未解決のギャップの節が見つからない。variables の gap を確認。_\n"
