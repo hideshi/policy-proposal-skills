@@ -44,6 +44,12 @@ PROFILES = {
     ],
 }
 
+DOCUMENT_KINDS = {
+    "analysis-pilot": "課題分析と実証起票",
+    "policy-options": "政策の選択肢",
+    "full": "課題分析・政策の選択肢・実証起票",
+}
+
 PRINCIPLE = (
     "利害の原則: 受益側の改善だけで成功としない。"
     "労働者・住民・事業者などへの分配・負荷・安全も同じ課題の一部として扱う。"
@@ -173,7 +179,8 @@ def build_md(challenge_dir: Path, profile: str, title: str | None) -> tuple[str,
     note_file("sources-index.md", sources_index)
     note_file("claim-evidence.md", claims)
 
-    display_title = title or f"提出パッケージ: {slug}"
+    kind = DOCUMENT_KINDS[profile]
+    display_title = title or f"{kind}: {slug}"
     parts: list[str] = []
 
     if "cover" in included:
@@ -189,7 +196,7 @@ def build_md(challenge_dir: Path, profile: str, title: str | None) -> tuple[str,
             f"- 課題名（物理名）: `{slug}`\n"
             f"- 生成日: {today}\n"
             f"- プロファイル: `{profile}`\n"
-            f"- 位置づけ: 提出用パッケージ（リポジトリ正本の要約・再構成）\n\n"
+            f"- 位置づけ: {kind}（リポジトリ正本の要約・再構成）\n\n"
             f"## 提出用の一文\n\n{one_liner or '_要確認_'}\n\n"
             f"## 利害の原則\n\n{PRINCIPLE}\n"
         )
@@ -230,7 +237,7 @@ def build_md(challenge_dir: Path, profile: str, title: str | None) -> tuple[str,
 
     parts.append(
         "\n---\n\n"
-        "本 PDF/Markdown は提出用パッケージである。"
+        f"本 PDF/Markdown は{kind}である。"
         "数値の正本は課題フォルダの findings / sources を優先する。\n"
     )
 
@@ -272,7 +279,7 @@ def _normalize_html_links(html: str) -> str:
     )
 
 
-def _md_to_html(pandoc: str, md_path: Path, html_path: Path) -> None:
+def _md_to_html(pandoc: str, md_path: Path, html_path: Path, html_title: str) -> None:
     subprocess.run(
         [
             pandoc,
@@ -285,7 +292,7 @@ def _md_to_html(pandoc: str, md_path: Path, html_path: Path) -> None:
             "-t",
             "html",
             "--metadata",
-            "title=提出パッケージ",
+            f"title={html_title}",
         ],
         check=True,
         capture_output=True,
@@ -339,7 +346,7 @@ def _html_to_pdf_weasy(html_path: Path, pdf_path: Path) -> None:
     )
 
 
-def build_pdf(md_path: Path, pdf_path: Path) -> tuple[bool, str]:
+def build_pdf(md_path: Path, pdf_path: Path, html_title: str) -> tuple[bool, str]:
     """Prefer HTML→weasyprint so source URLs become clickable PDF links."""
     pandoc = shutil.which("pandoc")
     if not pandoc:
@@ -348,7 +355,7 @@ def build_pdf(md_path: Path, pdf_path: Path) -> tuple[bool, str]:
     weasy_err = "weasyprint が無い"
     if shutil.which("weasyprint"):
         try:
-            _md_to_html(pandoc, md_path, html_path)
+            _md_to_html(pandoc, md_path, html_path, html_title)
             _html_to_pdf_weasy(html_path, pdf_path)
             return True, str(pdf_path) + " (weasyprint; clickable links)"
         except subprocess.CalledProcessError as e:
@@ -377,12 +384,12 @@ def build_pdf(md_path: Path, pdf_path: Path) -> tuple[bool, str]:
         except subprocess.CalledProcessError as e:
             xerr = (e.stderr or e.stdout or "xelatex 失敗")[-400:]
             try:
-                _md_to_html(pandoc, md_path, html_path)
+                _md_to_html(pandoc, md_path, html_path, html_title)
             except Exception:
                 pass
             return False, "PDF 未生成。weasy: " + weasy_err[:200] + " / xelatex: " + xerr
     try:
-        _md_to_html(pandoc, md_path, html_path)
+        _md_to_html(pandoc, md_path, html_path, html_title)
     except Exception as e:  # noqa: BLE001
         return False, "HTML も失敗: " + str(e)
     return False, "PDF 未生成（" + weasy_err + "）。HTML: " + str(html_path)
@@ -411,7 +418,7 @@ def main() -> int:
 
     if args.pdf:
         pdf_path = challenge_dir / f"{pkg_name}.pdf"
-        ok, msg = build_pdf(md_path, pdf_path)
+        ok, msg = build_pdf(md_path, pdf_path, DOCUMENT_KINDS[args.profile])
         print(("PDF OK: " if ok else "PDF skipped/failed: ") + msg)
         return 0 if ok else 1
     return 0
